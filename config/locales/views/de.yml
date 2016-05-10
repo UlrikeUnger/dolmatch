@@ -1,0 +1,31 @@
+de:
+  add: '%{model} hinzufügen'
+  confirm_destroy: 'Wirklich löschen?'
+  create: Anlegen
+  destroy: '%{model} löschen'
+  edit: '%{model} bearbeiten'
+  personal_data: Anmeldedaten
+  save: Speichern
+  search: Suchen
+  select: 'Bitte %{attribute} wählen'
+
+  home:
+    index:
+      mission_statement: dolmatch bringt freiwillige Dolmetscher und Geflüchtete schnell zusammen
+  interpreter:
+    appointments:
+      index:
+        become_interpreter: Freiwilliger Dolmatcher werden
+        sign_in_as_interpreter: Als freiwilliger anmelden
+  interpreters:
+    registrations:
+      new:
+        title: Freiwilliger Dolmatcher werden
+  organisation:
+    appointments:
+      index:
+        sign_in_as_organisation: Als sozialer Träger anmelden
+  organisations:
+    registrations:
+      new:
+        title: Organisation anlegen

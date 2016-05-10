@@ -1,0 +1,26 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  pool:     5
+  username: uliunger
+  password:
+  template: template0
+
+development:
+  <<: *default
+  database: dolmatch_development
+
+test:
+  <<: *default
+  database: dolmatch_test
+
+production:
+  <<: *default
+  database: dolmatch_production

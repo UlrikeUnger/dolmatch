@@ -1,0 +1,17 @@
+.devise-container
+  .devise-views.text-left
+    .panel.panel-default.devise-bs
+      .panel-heading
+        = title_with_icon(t('edit', model: Organisation.model_name.human), 'pencil')
+      .panel-body
+        = simple_form_for(@organisation) do |f|
+          = f.error_notification
+
+          = f.input :name
+          = f.simple_fields_for :address do |ad_f|
+            = ad_f.input :street
+            = ad_f.input :house_number
+            = ad_f.input :zip
+            = ad_f.input :city
+
+          = f.button :submit, t('edit', model: Organisation.model_name.human), class: 'btn btn-default btn-primary'

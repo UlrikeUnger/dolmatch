@@ -1,0 +1,70 @@
+de:
+  attributes:
+  activerecord:
+    attributes:
+      address:
+        city: Stadt
+        house_number: Hausnummer
+        street: Straße
+        zip: PLZ
+      appointment:
+        date_at: Am
+        end_time: Bis
+        description: Beschreibung
+        kind: Art des Termins
+        language_from: Übersetzen von
+        language_to: Übersetzen nach
+        start_time: Von
+        venue: Ort
+      language_skill:
+        locale: Sprache
+        level: Niveau
+      organisation:
+        name: Name der Einrichtung
+    models:
+      appointment:
+        one: Termin
+        other: Termine
+      interpreter: Ehrenamtliche Dolmetscher/innen
+      language_skill: Sprachkenntnisse
+      organisation: Sozialträger
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: muss akzeptiert werden
+      blank: muss ausgefüllt werden
+      present: darf nicht ausgefüllt werden
+      confirmation: stimmt nicht mit %{attribute} überein
+      empty: muss ausgefüllt werden
+      equal_to: muss genau %{count} sein
+      even: muss gerade sein
+      exclusion: ist nicht verfügbar
+      greater_than: muss größer als %{count} sein
+      greater_than_or_equal_to: muss größer oder gleich %{count} sein
+      inclusion: ist kein gültiger Wert
+      invalid: ist nicht gültig
+      less_than: muss kleiner als %{count} sein
+      less_than_or_equal_to: muss kleiner oder gleich %{count} sein
+      not_a_number: ist keine Zahl
+      not_an_integer: muss ganzzahlig sein
+      odd: muss ungerade sein
+      record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
+      restrict_dependent_destroy:
+        one: "Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz existiert."
+        many: "Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren."
+      taken: ist bereits vergeben
+      too_long:
+        one: ist zu lang (mehr als 1 Zeichen)
+        other: ist zu lang (mehr als %{count} Zeichen)
+      too_short:
+        one: ist zu kurz (weniger als 1 Zeichen)
+        other: ist zu kurz (weniger als %{count} Zeichen)
+      wrong_length:
+        one: hat die falsche Länge (muss genau 1 Zeichen haben)
+        other: hat die falsche Länge (muss genau %{count} Zeichen haben)
+      other_than: darf nicht gleich %{count} sein
+      ean_for_sku_not_found: Artikel EAN nicht gefunden
+      outlisted: Artikel ist nicht mehr bestellbar
+  will_paginate:
+    previous_label: '&#8592; Zurück'
+    next_label: 'Weiter &#8594;'

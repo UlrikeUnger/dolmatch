@@ -1,0 +1,7 @@
+.devise-container
+  .devise-views.text-left
+    .panel.panel-default.devise-bs
+      .panel-heading
+        = title_with_icon(t('edit', model: Appointment.model_name.human), 'pencil')
+      .panel-body
+        = render 'form', appointment: @appointment

@@ -1,0 +1,5 @@
+- flash.each do |name, msg|
+  %div{class: "alert #{alert_class_for(name)} alert-dismissable"}
+    = fa_icon 'exclamation-sign'
+    = sanitize(msg)
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;

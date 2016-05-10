@@ -1,0 +1,13 @@
+de:
+  simple_form:
+    'yes': Ja
+    'no': Nein
+    prompts:
+      defaults:
+        locale: Sprache auswählen
+    options:
+      language:
+        level:
+          conversational: gesprächig
+          intermediate: mittelmässig
+          profi: professionel
