@@ -20,6 +20,8 @@ gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
 gem 'devise-bootstrap-views'
 gem 'will_paginate-bootstrap'
+gem 'rails_12factor'
+gem 'puma'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
