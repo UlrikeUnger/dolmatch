@@ -8,14 +8,16 @@ de:
         street: Straße
         zip: PLZ
       appointment:
+        address: Ort
         date_at: Am
-        end_time: Bis
+        start_time_at: Anfangszeit
+        end_time_at: bis ca. Endzeit
         description: Beschreibung
         kind: Art des Termins
         language_from: Übersetzen von
         language_to: Übersetzen nach
         start_time: Von
-        venue: Ort
+        venue: Treffpunkt
       language_skill:
         locale: Sprache
         level: Niveau
@@ -65,6 +67,7 @@ de:
       other_than: darf nicht gleich %{count} sein
       ean_for_sku_not_found: Artikel EAN nicht gefunden
       outlisted: Artikel ist nicht mehr bestellbar
+
   will_paginate:
     previous_label: '&#8592; Zurück'
     next_label: 'Weiter &#8594;'

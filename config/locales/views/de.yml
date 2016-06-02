@@ -1,9 +1,11 @@
 de:
   add: '%{model} hinzufügen'
+  active_filters: Aktive Filter
   confirm_destroy: 'Wirklich löschen?'
   create: Anlegen
   destroy: '%{model} löschen'
   edit: '%{model} bearbeiten'
+  open_appointments: '%{count} Offene Termine'
   personal_data: Anmeldedaten
   save: Speichern
   search: Suchen
@@ -16,13 +18,17 @@ de:
     appointments:
       index:
         become_interpreter: Freiwilliger Dolmatcher werden
-        sign_in_as_interpreter: Als freiwilliger anmelden
+        sign_in_as_interpreter: Anmelden
   interpreters:
     registrations:
       new:
         title: Freiwilliger Dolmatcher werden
   organisation:
     appointments:
+      form:
+        information_about_address: Angaben zum Treffpunkt
+        information_about_refugee: Angaben zum Geflüchten
+        only_with_consent: Nur mit Zustimmung des Geflüchteten, wird angezeigt nachdem der freiwillige Dolmetscher den Termin übernommen hat
       index:
         sign_in_as_organisation: Als sozialer Träger anmelden
   organisations:

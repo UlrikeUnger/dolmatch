@@ -1,0 +1,14 @@
+= title_with_icon(t('.title'), 'male')
+
+= simple_form_for @interpreter, as: :interpreter do |f|
+  = f.input :email
+  = f.input :password
+
+  %h2= LanguageSkill.model_name.human
+  = f.simple_fields_for :language_skills do |language_skill|
+    = render 'language_skill_fields', f: language_skill
+  .links
+    = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
+    :language_skills, class: 'btn btn-default btn-sm'
+
+  = f.button :submit, t('.title'), class: 'btn btn-default btn-primary'

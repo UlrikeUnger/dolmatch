@@ -17,6 +17,7 @@
 #= require bootstrap-sprockets
 #= require moment
 #= require moment/de
-#= require daterangepicker
+#= require bootstrap-datepicker
+#= require bootstrap-datepicker/locales/bootstrap-datepicker.de.js
 #= require cocoon
 #= require_tree .

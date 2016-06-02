@@ -1,5 +1,27 @@
+# == Schema Information
+#
+# Table name: appointments
+#
+#  id              :integer          not null, primary key
+#  start_time_at   :time
+#  end_time_at     :time
+#  date_at         :date
+#  kind            :integer
+#  description     :text
+#  venue           :string
+#  status          :string
+#  language_from   :string
+#  language_to     :string
+#  organisation_id :integer
+#  interpreter_id  :integer
+#  refugee_id      :integer
+#  address_id      :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class Appointment < ActiveRecord::Base
-  KINDS = %i[doctor goverment_agency others].freeze
+  KINDS = %i[doctor agency general_support police lawyer school support_inhouse others].freeze
   STATUSES = %i[available assigned done].freeze
 
   belongs_to :organisation
@@ -7,9 +29,11 @@ class Appointment < ActiveRecord::Base
   belongs_to :refugee
   belongs_to :address
 
-  accepts_nested_attributes_for :address, reject_if: :all_blank
+  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :refugee, reject_if: :all_blank
 
-  validates :venue, :kind, :organisation, :language_from, :language_to, presence: true
+  validates :venue, :kind, :organisation, :address, :date_at,
+  :language_from, :language_to, presence: true
 
   scope :accessable, -> (current_interpreter) { where("status = 'available' OR interpreter_id = ?", current_interpreter) }
 

@@ -6,15 +6,24 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .container
-      .text-center
-        .text-right
-          - if current_interpreter
-            = link_to 'Logout', destroy_interpreter_session_path, data: {method: :delete}
-          - elsif current_organisation
-            = link_to 'Edit', edit_organisation_path(current_organisation)
-            = link_to 'Logout', destroy_organisation_session_path, data: {method: :delete}
-        #notice
-          = render 'shared/messages' if flash.any?
+    .header
+      .container
+        .row
+          .col-lg-6= image_tag 'dolmatch.png'
+          .col-lg-6.text-right
+            - if current_interpreter
+              = link_to 'Logout', destroy_interpreter_session_path, data: {method: :delete}
+            - elsif current_organisation
+              = link_to 'Edit', edit_organisation_path(current_organisation)
+              = link_to 'Logout', destroy_organisation_session_path, data: {method: :delete}
 
-        = yield
+    .container
+      #notice
+        = render 'shared/messages' if flash.any?
+
+      = yield
+
+    .footer
+      .container
+        .row
+          .col-lg-12= image_tag 'dolmatch.png'

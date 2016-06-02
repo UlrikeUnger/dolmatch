@@ -10,6 +10,7 @@ class Organisation::AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @appointment.build_address unless @appointment.address
+    @appointment.build_refugee unless @appointment.refugee
   end
 
   def create
@@ -19,6 +20,7 @@ class Organisation::AppointmentsController < ApplicationController
       redirect_to organisation_appointments_path(@appointment)
     else
       @appointment.build_address unless @appointment.address
+      @appointment.build_refugee unless @appointment.refugee
       render :new
     end
   end
@@ -63,6 +65,7 @@ class Organisation::AppointmentsController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(:start_time, :end_time, :date_at, :kind, :description,
     :venue, :language_to, :language_from,
-    address_attributes: [:id, :street, :zip, :city, :house_number])
+    address_attributes: [:id, :street, :zip, :city, :house_number],
+    refugee_attributes: [:name, :phone_number, :country_of_origin])
   end
 end

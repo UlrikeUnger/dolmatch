@@ -8,6 +8,8 @@
           = f.error_notification
 
           = f.input :name
+          = f.input :phone_number
+
           = f.simple_fields_for :address do |ad_f|
             = ad_f.input :street
             = ad_f.input :house_number

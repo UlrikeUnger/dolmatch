@@ -1,28 +1,33 @@
-.panel.panel-default
-  .panel-heading
-    .row
-      .col-md-6
-        - if current_interpreter
-          .btn-group.btn-group-justified
-            = link_with_icon(interpreter_appointments_path(search: {status_eq: :available} ), 'hand-paper-o', 'available', class: 'btn btn-default btn-sm')
-            = link_with_icon(interpreter_appointments_path(search: {status_eq: :assigned} ), 'hand-rock-o', 'my open', class: 'btn btn-default btn-sm')
-            = link_with_icon(interpreter_appointments_path(search: {status_eq: :done} ), 'remove', 'my done', class: 'btn btn-default btn-sm')
-      .col-md-6.text-right
-        = search_form_for [:interpreter, @search], html: {class: 'form-inline'}, defaults: {label: false} do |f|
-          = f.input :language_to, collection: [:de, :en],
-          prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
-          = f.input :language_from, collection: [:de, :en],
-          prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
-          = f.input :venue_cont, placeholder: Appointment.human_attribute_name(:venue)
-          = f.input :kind_eq, collection: Appointment.kinds, prompt: t('select', attribute: Appointment.human_attribute_name(:kind))
-          = f.submit t('search'), class: 'btn btn-default btn-sm'
-  .panel-body
+.row
+  .col-12-lg
+    %h1= t('open_appointments', count: @appointments.count)
+
+.row
+  .col-lg-4.filter
+    %label= "#{t('active_filters')}:"
+    - if current_interpreter
+      .btn-group.btn-group-justified
+        = link_with_icon(interpreter_appointments_path(search: {status_eq: :available} ), 'hand-paper-o', 'available', class: 'btn btn-default btn-sm')
+        = link_with_icon(interpreter_appointments_path(search: {status_eq: :assigned} ), 'hand-rock-o', 'my open', class: 'btn btn-default btn-sm')
+        = link_with_icon(interpreter_appointments_path(search: {status_eq: :done} ), 'remove', 'my done', class: 'btn btn-default btn-sm')
+
+    = search_form_for [:interpreter, @search], defaults: {label: false} do |f|
+      = f.input :language_to, collection: [:de, :en],
+      prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
+      = f.input :language_from, collection: [:de, :en],
+      prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
+      = f.input :address_zip_or_address_city_cont, placeholder: Appointment.human_attribute_name(:address)
+      = f.input :kind_eq, collection: Appointment.kinds, prompt: t('select', attribute: Appointment.human_attribute_name(:kind))
+      = f.submit t('search'), class: 'btn btn-default btn-sm'
+
+  .col-lg-8
     %table.table.table-striped
       %thead
         %tr
           %td= Appointment.human_attribute_name :kind
           %td= Appointment.human_attribute_name :language_from
           %td= Appointment.human_attribute_name :language_to
+          %td= Appointment.human_attribute_name :address
           %td= Appointment.human_attribute_name :date_at
           - if current_interpreter
             %td= Appointment.human_attribute_name :venue
@@ -32,7 +37,8 @@
             %td= appointment.kind
             %td= appointment.language_from
             %td= appointment.language_to
-            %td= appointment.date_at
+            %td= "#{appointment.address.zip} #{appointment.address.city}"
+            %td= date_and_time appointment
             - if current_interpreter
               %td= appointment.venue
             %td
@@ -47,7 +53,6 @@
                   = link_with_icon(interpreter_appointment_path(appointment, event: :move_to_done),
                   'hand-rock-o', '', 'btn-xs btn-primary', data: {method: :patch})
               - else
-                = link_with_icon(new_interpreter_registration_path, 'male', t('.become_interpreter'), 'btn btn-default btn-primary')
                 = link_to(t('.sign_in_as_interpreter'), new_interpreter_session_path, class: 'btn btn-default btn-primary')
 
     = will_paginate @collection, renderer: BootstrapPagination::Rails, class: 'pagination-sm'
