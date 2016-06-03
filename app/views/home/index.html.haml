@@ -1,4 +1,16 @@
 .mission-statement= t('.mission_statement')
-
-= link_with_icon(organisation_appointments_path, 'institution', Organisation.model_name.human, 'btn btn-default btn-primary' )
-= link_with_icon(interpreter_appointments_path, 'male', Interpreter.model_name.human, 'btn btn-default btn-primary')
+.row
+  .col-sm-4.col-sm-offset-2
+    .mission-panel
+      .panel-title= t('.title_interpreter')
+      .panel-content
+        = t('.content_interpreter')
+        .row
+          .col-sm-12= link_to(t('.see_appointments'), organisation_appointments_path, class: 'btn btn-default btn-info' )
+  .col-sm-4
+    .mission-panel
+      .panel-title= t('.title_organisation')
+      .panel-content
+        .mission-text= t('.content_organisation')
+        .row
+          .col-sm-12= link_to(t('.add_appointment'), interpreter_appointments_path, class: 'btn btn-default btn-info' )

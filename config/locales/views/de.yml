@@ -13,7 +13,13 @@ de:
 
   home:
     index:
-      mission_statement: dolmatch bringt freiwillige Dolmetscher und Geflüchtete schnell zusammen
+      add_appointment: Termin erstellen
+      content_interpreter: Wir sind ständig auf der Suche nach ehrenamtlichen Dolmetschern. Schau doch kurz in unsere Terminübersicht?
+      content_organisation: Ein Geflüchteter braucht Hilfe bei einer Übersetzung, einem Besuch beim Amt oder Arzt? Wir können Dir helfen.
+      mission_statement: dolmatch bringt ehrenamtliche Dolmetscher und Geflüchtete schnell zusammen
+      title_interpreter: Du willst helfen?
+      title_organisation: Du brauchst Hilfe?
+      see_appointments: Termin finden
   interpreter:
     appointments:
       index:
