@@ -3,7 +3,7 @@ class Interpreter::AppointmentsController < ApplicationController
   before_action :general_appointment, only: [:assign, :show]
 
   def index
-    @search = Appointment.accessable(current_interpreter).ransack(params[:search])
+    @search = Appointment.accessable(current_interpreter).ransack(params[:q])
     @appointments = @search.result.paginate(page: params[:page])
   end
 

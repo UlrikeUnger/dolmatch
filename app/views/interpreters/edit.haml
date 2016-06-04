@@ -1,0 +1,19 @@
+.devise-container
+  .devise-views.text-left
+    .panel.panel-default.devise-bs
+      .panel-heading
+        = title_with_icon(t('edit', model: Interpreter.model_name.human), 'pencil')
+      .panel-body
+        = simple_form_for(@interpreter) do |f|
+          = f.error_notification
+
+          = f.input :zip
+          = f.input :radius
+
+          = f.simple_fields_for :language_skills do |language_skill|
+            = render 'language_skill_fields', f: language_skill
+          .links
+            = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
+            :language_skills, class: 'btn btn-default btn-sm'
+
+          = f.button :submit, t('edit', model: Interpreter.model_name.human), class: 'btn btn-default btn-primary'

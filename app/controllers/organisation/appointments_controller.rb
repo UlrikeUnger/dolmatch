@@ -3,7 +3,7 @@ class Organisation::AppointmentsController < ApplicationController
   before_action :appointment, only: [:edit, :update, :destroy, :show]
 
   def index
-    @search = current_organisation ? current_organisation.appointments.ransack(params[:search]) : Appointment.ransack(params[:search])
+    @search = current_organisation ? current_organisation.appointments.ransack(params[:q]) : Appointment.ransack(params[:q])
     @appointments = @search.result.paginate(page: params[:page])
   end
 
