@@ -25,7 +25,7 @@ module Dolmatch
     config.active_record.raise_in_transactional_callbacks = true
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-    config.i18n.available_locales = [:de]
-    config.i18n.default_locale = :de
+    config.i18n.available_locales = [:de, :en]
+    config.i18n.default_locale = :en
   end
 end

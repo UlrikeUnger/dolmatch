@@ -9,7 +9,9 @@
     .header
       .container
         .row
-          .col-lg-6= image_tag 'dolmatch.png'
+          .col-lg-6
+            = link_to root_path do
+              = image_tag 'dolmatch.png'
           .col-lg-6.text-right
             - if current_interpreter
               = link_to 'Logout', destroy_interpreter_session_path, data: {method: :delete}

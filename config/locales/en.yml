@@ -1,23 +1,69 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  attributes:
+  activerecord:
+    attributes:
+      address:
+        city: City
+        house_number: Number
+        street: Street
+        zip: Zip
+      appointment:
+        address: Address
+        date_at: At
+        start_time_at: Start time
+        end_time_at: approximately end time
+        description: Description
+        kind: kind of appointment
+        language_from: language from
+        language_to: language to
+        venue: Meeting point
+      language_skill:
+        locale: Language
+        level: Level
+      organisation:
+        name: Name of organisation
+    models:
+      appointment:
+        one: Appointment
+        other: Appointments
+      interpreter: Voluntary interpreter
+      language_skill: Language skills
+      organisation: Organisation
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      messages:
+      accepted: must be accepted
+      blank: can't be blank
+      present: must be blank
+      confirmation: doesn't match %{attribute}
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      model_invalid: "Validation failed: %{errors}"
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      required: must exist
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      other_than: must be other than %{count}
+
+  will_paginate:
+    previous_label: '&#8592; Zurück'
+    next_label: 'Weiter &#8594;'

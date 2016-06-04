@@ -1,0 +1,8 @@
+de:
+  notification:
+    save:
+      success: '%{model} successfully saved'
+      failure: '%{model} could not be saved'
+    destroy:
+      success: '%{model} successfully deleted'
+      fail: '%{model} could not be deleted'
