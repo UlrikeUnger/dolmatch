@@ -9,12 +9,12 @@ en:
         zip: Zip
       appointment:
         address: Address
-        date_at: At
+        date_at: Time
         start_time_at: Start time
         end_time_at: approximately end time
         description: Description
-        kind: kind of appointment
-        language_from: language from
+        kind: Mission
+        language_from: language
         language_to: language to
         venue: Meeting point
       language_skill:

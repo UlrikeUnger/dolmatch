@@ -21,7 +21,7 @@
 #
 
 class Appointment < ActiveRecord::Base
-  KINDS = %i[doctor agency general_support police lawyer school support_inhouse others].freeze
+  KINDS = %i[job_center agency education housing doctor police law_issues others].freeze
   STATUSES = %i[available assigned done].freeze
 
   belongs_to :organisation

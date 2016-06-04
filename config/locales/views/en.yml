@@ -1,10 +1,10 @@
 en:
   add: 'Add %{model}'
-  active_filters: Active filters
   confirm_destroy: 'Are you sure?'
   create: Create
   destroy: 'Delete %{model}'
   edit: 'Edit %{model}'
+  filters: Filters
   open_appointments: '%{count} open appointments'
   personal_data: Login data
   save: Save
@@ -13,10 +13,12 @@ en:
 
   home:
     index:
+      ask_for_help: 'Ask for help with:'
       add_appointment: Add appointment
       content_interpreter: We are looking permantantely for voluntary interpreters. Look into the open appointments
       content_organisation: A refugee needs help with a tranlations, a doctors or goverment agency appointment. How can we help?
       mission_statement: dolmatch quickly connects voluntary interpreters with refugees
+      see_if_you_can_help: 'See if you can help:'
       title_interpreter: You want to help?
       title_organisation: You need help?
       see_appointments: See Appointments
