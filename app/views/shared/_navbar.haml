@@ -3,25 +3,18 @@
     - if current_interpreter
       %li{class: (request.path == root_path) ? 'active' : ''}= link_to t('.find_a_mission'), root_path
       %li{class: (request.path.start_with?(interpreter_appointments_path)) ? 'active' : ''}= link_to t('.my_missions'), interpreter_appointments_path
-      -# %li{class: (request.path == edit_interpreter_path(current_interpreter)) ? 'active' : ''}
-      -#   = link_to t('.edit_profile'), edit_interpreter_path(current_interpreter)
-      -# %li= link_to t('.logout'), destroy_interpreter_session_path, data: {method: :delete}
       %li{class: (request.path == edit_interpreter_path(current_interpreter)) ? 'active' : ''}
-        = link_with_icon(edit_interpreter_path(current_interpreter), 'user', '', 'btn btn-dark')
-      %li
-        = link_with_icon(edit_interpreter_path(current_interpreter), 'sign-out', '', 'btn btn-dark')
-
+        = link_to t('.edit_profile'), edit_interpreter_path(current_interpreter)
+      %li= link_to t('.logout'), destroy_interpreter_session_path, data: {method: :delete}
     - elsif current_organisation
       %li{class: (request.path == new_organisation_appointment_path) ? 'active' : ''}= link_to t('.ask_for_help'), new_organisation_appointment_path
       - is_active = request.path.start_with?(organisation_appointments_path) && !(request.path == new_organisation_appointment_path)
       %li{class: (is_active) ? 'active' : ''}= link_to t('.my_requests'), organisation_appointments_path
       %li{class: (request.path == edit_organisation_path(current_organisation)) ? 'active' : ''}= link_to t('.edit_profile'), edit_organisation_path(current_organisation)
-      //= link_to edit_organisation_path(current_organisation), class: 'btn btn-default' do
       %li= link_to t('.logout'), destroy_organisation_session_path, data: {method: :delete}
-      //= link_to 'Logout', destroy_organisation_session_path, data: {method: :delete}
     - else
-      %li= link_to(t('.ask_for_help'), new_interpreter_session_path, class: 'btn btn-primary')
-      %li= link_to(t('.offer_help'), new_organisation_session_path, class: 'btn btn-primary')
+      %li= link_to(t('.ask_for_help'), new_organisation_session_path, class: 'btn btn-primary')
+      %li= link_to(t('.offer_help'), new_interpreter_session_path, class: 'btn btn-primary')
     %li.language-select
       = simple_form_for :language, url: language_path, method: :patch do |f|
         = f.input :locale, collection: I18n.available_locales, label: false,
