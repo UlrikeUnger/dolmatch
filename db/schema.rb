@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604141303) do
+ActiveRecord::Schema.define(version: 20160604224517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20160604141303) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interpreters", force: :cascade do |t|
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -62,6 +71,9 @@ ActiveRecord::Schema.define(version: 20160604141303) do
     t.string   "unconfirmed_email"
     t.string   "zip"
     t.string   "radius"
+    t.string   "authentication_id"
+    t.string   "name"
+    t.string   "phone_number"
   end
 
   add_index "interpreters", ["email"], name: "index_interpreters_on_email", unique: true, using: :btree
@@ -95,6 +107,7 @@ ActiveRecord::Schema.define(version: 20160604141303) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "phone_number"
+    t.string   "authentication_id"
   end
 
   add_index "organisations", ["email"], name: "index_organisations_on_email", unique: true, using: :btree

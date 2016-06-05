@@ -1,58 +1,10 @@
-.row
-  .col-12-lg
-    %h1= t('open_appointments', count: @appointments.count)
-
-.row
-  .col-lg-4.filter
-    %label= "#{t('active_filters')}:"
-    - if current_interpreter
-      .btn-group.btn-group-justified
-        = link_with_icon(interpreter_appointments_path(search: {status_eq: :available} ), 'hand-paper-o', 'available', class: 'btn btn-default btn-sm')
-        = link_with_icon(interpreter_appointments_path(search: {status_eq: :assigned} ), 'hand-rock-o', 'my open', class: 'btn btn-default btn-sm')
-        = link_with_icon(interpreter_appointments_path(search: {status_eq: :done} ), 'remove', 'my done', class: 'btn btn-default btn-sm')
-
-    = search_form_for [:interpreter, @search], defaults: {label: false} do |f|
-      = f.input :language_to, collection: [:de, :en],
-      prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
-      = f.input :language_from, collection: [:de, :en],
-      prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
-      = f.input :address_zip_or_address_city_cont, placeholder: Appointment.human_attribute_name(:address)
-      = f.input :kind_eq, collection: Appointment.kinds, prompt: t('select', attribute: Appointment.human_attribute_name(:kind))
-      = f.submit t('search'), class: 'btn btn-default btn-sm'
-
-  .col-lg-8
-    %table.table.table-striped
-      %thead
-        %tr
-          %td= Appointment.human_attribute_name :kind
-          %td= Appointment.human_attribute_name :language_from
-          %td= Appointment.human_attribute_name :language_to
-          %td= Appointment.human_attribute_name :address
-          %td= Appointment.human_attribute_name :date_at
-          - if current_interpreter
-            %td= Appointment.human_attribute_name :venue
-      %tbody
-        - @appointments.each do |appointment|
-          %tr
-            %td= appointment.kind
-            %td= appointment.language_from
-            %td= appointment.language_to
-            %td= "#{appointment.address.zip} #{appointment.address.city}"
-            %td= date_and_time appointment
-            - if current_interpreter
-              %td= appointment.venue
-            %td
-              - if current_interpreter
-                = link_with_icon(interpreter_appointment_path(appointment), 'eye', '', 'btn-xs btn-info')
-                - if appointment.available?
-                  = link_with_icon(assign_interpreter_appointment_path(appointment),
-                  'thumbs-o-up', '', 'btn-xs btn-primary', data: {method: :patch})
-                - elsif appointment.assigned?
-                  = link_with_icon(interpreter_appointment_path(appointment, event: :unassign),
-                  'thumbs-o-down', '', 'btn-xs btn-primary', data: {method: :patch})
-                  = link_with_icon(interpreter_appointment_path(appointment, event: :move_to_done),
-                  'hand-rock-o', '', 'btn-xs btn-primary', data: {method: :patch})
-              - else
-                = link_to(t('.sign_in_as_interpreter'), new_interpreter_session_path, class: 'btn btn-default btn-primary')
-
-    = will_paginate @collection, renderer: BootstrapPagination::Rails, class: 'pagination-sm'
+- if @appointments.empty?
+  %h1= Appointment.human_status_name(:assigned)
+  .panel.empty.text-center
+    %h1= t('.no_open_missions')
+    = t('.see_if_you_can_help')
+    %div= link_to t('find_a_mission'), root_path, class: 'btn btn-primary'
+- else
+  = render 'appointments', appointments: @appointments.with_status(:assigned), title: t('appointments.status.assigned')
+  - if @appointments.with_status(:done).any?
+    = render 'appointments', appointments: @appointments.with_status(:done), title: t('appointments.status.done')

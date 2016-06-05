@@ -1,0 +1,94 @@
+%h2= t('.ask_for_help')
+= render 'home/add_appointment'
+
+- if appointments.empty?
+  = render 'empty_scope'
+- else
+  - if appointments.with_status(:assigned).empty?
+    = render 'empty_scope'
+  - else
+    .row
+      .col-lg-12
+        %h2= t('appointments.status.assigned')
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %td= Appointment.human_attribute_name :language_from
+              %td= Appointment.human_attribute_name :kind
+              %td= Appointment.human_attribute_name :address
+              %td= Appointment.human_attribute_name :date_at
+              %td= Interpreter.model_name.human
+              %td
+              %td
+              %td= t('edit', model: '')
+              %td= t('destroy', model: '')
+              %td
+
+          %tbody
+            - appointments.with_status(:assigned).each do |appointment|
+              %tr
+                %td= appointment.language_from
+                %td= appointment.kind
+                %td= "#{appointment.address.zip} #{appointment.address.city}"
+                %td= date_and_time appointment
+                %td
+                  %span{data: {toggle: 'tooltip'}, title: appointment.interpreter.phone_number}
+                    = appointment.interpreter.name
+                %td= link_to(t('.finish_request'), move_to_done_organisation_appointment_path(appointment),
+                class: 'btn btn-primary', data: {method: :patch})
+                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn-dark')
+                %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn-dark')
+                %td
+                  = link_with_icon(organisation_appointment_path(appointment), 'trash', '', 'btn-danger',
+                  data: { method: 'DELETE', confirm: t('confirm_destroy') })
+
+  - if appointments.with_status(:available).any?
+    .row
+      .col-lg-12
+        %h2= t('appointments.status.available')
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %td= Appointment.human_attribute_name :language_from
+              %td= Appointment.human_attribute_name :kind
+              %td= Appointment.human_attribute_name :address
+              %td= Appointment.human_attribute_name :date_at
+              %td
+              %td= t('edit', model: '')
+              %td
+
+          %tbody
+            - appointments.with_status(:available).each do |appointment|
+              %tr
+                %td= appointment.language_from
+                %td= appointment.kind
+                %td= "#{appointment.address.zip} #{appointment.address.city}"
+                %td= date_and_time appointment
+                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn-dark')
+                %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn-dark')
+
+  - if appointments.with_status(:done).any?
+    .row
+      .col-lg-12
+        %h2= t('appointments.status.done')
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %td= Appointment.human_attribute_name :language_from
+              %td= Appointment.human_attribute_name :kind
+              %td= Appointment.human_attribute_name :address
+              %td= Appointment.human_attribute_name :date_at
+              %td= Interpreter.model_name.human
+              %td
+
+          %tbody
+            - appointments.with_status(:done).each do |appointment|
+              %tr
+                %td= appointment.language_from
+                %td= appointment.kind
+                %td= "#{appointment.address.zip} #{appointment.address.city}"
+                %td= date_and_time appointment
+                %td
+                  %span{data: {toggle: 'tooltip'}, title: appointment.interpreter.phone_number}
+                    = appointment.interpreter.name
+                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn-dark')

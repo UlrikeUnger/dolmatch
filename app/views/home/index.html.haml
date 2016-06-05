@@ -1,23 +1,29 @@
 = content_for(:mission_statement) do
   .mission-statement= t('.mission_statement')
 
-%h2= t('.ask_for_help')
-= render 'add_appointment'
+- unless current_interpreter
+  %h2= t('.ask_for_help')
+  = render 'add_appointment'
 
 %h2= t('.see_if_you_can_help')
 .row
-  .col-lg-4
-    %label= t 'filters'
-    = search_form_for @search, url: root_path, defaults: {label: false} do |f|
-      = f.input :language_to, collection: [:de, :en],
-      prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
-      = f.input :language_from, collection: [:de, :en],
-      prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
-      = f.input :address_zip_or_address_city_cont, placeholder: Appointment.human_attribute_name(:address)
-      = f.input :kind_eq, collection: Appointment.kinds, prompt: t('select', attribute: Appointment.human_attribute_name(:kind))
-      = f.submit t('search'), class: 'btn btn-default btn-sm'
+  .col-md-3
+    .filters
+      .filters-head= t 'filters'
+      .filters-content
+        = search_form_for @search, url: root_path do |f|
+          = f.input :language_to, collection: [:de, :en],
+          prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
+          = f.input :language_from, collection: [:de, :en],
+          prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
+          = f.input :address_zip_or_address_city_cont,
+          placeholder: Appointment.human_attribute_name(:address), label: Appointment.human_attribute_name(:zip_or_city)
+          = f.input :kind_eq, collection: Appointment.kinds,
+          prompt: t('select', attribute: Appointment.human_attribute_name(:kind)),
+          label: Appointment.human_attribute_name(:kind)
+          = f.submit t('search'), class: 'btn btn-default btn-sm'
 
-  .col-lg-8
+  .col-md-9
     %table.table.table-striped
       %thead
         %tr
@@ -25,27 +31,19 @@
           %td= Appointment.human_attribute_name :kind
           %td= Appointment.human_attribute_name :address
           %td= Appointment.human_attribute_name :date_at
-          - if current_interpreter
-            %td= Appointment.human_attribute_name :venue
+          %td
+
       %tbody
         - @appointments.each do |appointment|
           %tr
             %td= appointment.language_from
             %td= appointment.kind
             %td= "#{appointment.address.zip} #{appointment.address.city}"
-            %td= date_and_time appointment
+            %td{class: (appointment.date_at == Date.today) ? 'urgent' : ''}
+              = date_and_time appointment
             - if current_interpreter
-              %td= appointment.venue
-            %td
-              - if current_interpreter
-                = link_with_icon(interpreter_appointment_path(appointment), 'eye', '', 'btn-xs btn-info')
-                - if appointment.available?
-                  = link_with_icon(assign_interpreter_appointment_path(appointment),
-                  'thumbs-o-up', '', 'btn-xs btn-primary', data: {method: :patch})
-                - elsif appointment.assigned?
-                  = link_with_icon(interpreter_appointment_path(appointment, event: :unassign),
-                  'thumbs-o-down', '', 'btn-xs btn-primary', data: {method: :patch})
-                  = link_with_icon(interpreter_appointment_path(appointment, event: :move_to_done),
-                  'hand-rock-o', '', 'btn-xs btn-primary', data: {method: :patch})
+              %td= link_with_icon(interpreter_appointment_path(appointment), 'eye', '', 'btn-info')
+            - else
+              %td= link_with_icon(new_interpreter_session_path, 'eye', '', 'btn-info')
 
     = will_paginate @appointments, renderer: BootstrapPagination::Rails, class: 'pagination-sm'

@@ -1,36 +1,46 @@
 de:
   add: '%{model} hinzufügen'
-  active_filters: Aktive Filter
+  ask_for_help: Hilfe ersuchen
   confirm_destroy: 'Wirklich löschen?'
   create: Anlegen
   destroy: '%{model} löschen'
   edit: '%{model} bearbeiten'
+  filters: Filters
+  find_a_mission: Mision suchen / finden
   open_appointments: '%{count} Offene Termine'
   personal_data: Anmeldedaten
   save: Speichern
   search: Suchen
   select: 'Bitte %{attribute} wählen'
 
+  header:
+    help_by_sharing: Hilfe mit deiner Erfahrung
   home:
     index:
+      ask_for_help: 'Um Hilfe fragen mit:'
       add_appointment: Termin erstellen
-      content_interpreter: Wir sind ständig auf der Suche nach ehrenamtlichen Dolmetschern. Schau doch kurz in unsere Terminübersicht?
-      content_organisation: Ein Geflüchteter braucht Hilfe bei einer Übersetzung, einem Besuch beim Amt oder Arzt? Wir können Dir helfen.
-      mission_statement: dolmatch bringt ehrenamtliche Dolmetscher und Geflüchtete schnell zusammen
-      title_interpreter: Du willst helfen?
-      title_organisation: Du brauchst Hilfe?
+      mission_statement: Shexy bringt ehrenamtliche Dolmetscher und Geflüchtete schnell zusammen
+      see_if_you_can_help: Wo kannst du helfen?
       see_appointments: Termin finden
+  footer:
+    copyright: 'Shexy / Spacehack Hackathon 2016'
   interpreter:
     appointments:
       index:
-        become_interpreter: Freiwilliger Dolmatcher werden
-        sign_in_as_interpreter: Anmelden
+        no_open_missions: Keine offenen Termine
+        see_if_you_can_help: Hier kannst du helfen
+      show:
+        appointment: 'Termin: %{kind}'
+        i_cant_help_you: "Ich kann den Termin leider nicht wahrnehmen"
+        ill_help_you: Ich kann dir helfen!
   interpreters:
     registrations:
       new:
         title: Freiwilliger Dolmatcher werden
   organisation:
     appointments:
+      appointments:
+        finish_request: Termin als beendet markieren
       form:
         information_about_address: Angaben zum Treffpunkt
         information_about_refugee: Angaben zum Geflüchten
@@ -41,3 +51,12 @@ de:
     registrations:
       new:
         title: Organisation anlegen
+  shared:
+    navbar:
+      ask_for_help: Termin einstellen
+      find_a_mission: Einen Termin finden
+      edit_profile: Profil editieren
+      logout: Logout
+      my_missions: Meine Termine
+      my_requests: Meine Anfragen
+      offer_help: Biete hilfe

@@ -1,3 +1,10 @@
+- path_fo_button = current_organisation ? new_organisation_appointment_path : new_organisation_session_path
 .row
-  - Appointment.kinds.each do |key, value|
-    .col-lg-3= link_to t("appointment.kinds.#{key}"), new_interpreter_session_path, class: 'btn btn-default'
+  .col-sm-3= link_with_icon path_fo_button, 'suitcase', t('appointment.kinds.job_center'), 'btn-lg btn-default btn-job-center'
+  .col-sm-3= link_with_icon path_fo_button, 'bank', t('appointment.kinds.agency'), 'btn-lg btn-default btn-agency'
+  .col-sm-3= link_with_icon path_fo_button, 'book', t('appointment.kinds.education'), 'btn-lg btn-default btn-education'
+  .col-sm-3= link_with_icon path_fo_button, 'home', t('appointment.kinds.housing'), 'btn-lg btn-default btn-housing'
+  .col-sm-3= link_with_icon path_fo_button, 'asterisk', t('appointment.kinds.doctor'), 'btn-lg btn-default btn-doctor'
+  .col-sm-3= link_with_icon path_fo_button, 'star', t('appointment.kinds.police'), 'btn-lg btn-default btn-police'
+  .col-sm-3= link_with_icon path_fo_button, 'balance-scale', t('appointment.kinds.law_issues'), 'btn-lg btn-default btn-law-issues'
+  .col-sm-3= link_with_icon path_fo_button, 'ellipsis-h', t('appointment.kinds.others'), 'btn-lg btn-default btn-others'

@@ -1,45 +1,63 @@
 en:
   add: 'Add %{model}'
+  ask_for_help: Ask for help
   confirm_destroy: 'Are you sure?'
   create: Create
   destroy: 'Delete %{model}'
   edit: 'Edit %{model}'
   filters: Filters
+  find_a_mission: Find a mission
   open_appointments: '%{count} open appointments'
   personal_data: Login data
   save: Save
   search: Search
   select: 'Please choose %{attribute}'
 
+  header:
+    help_by_sharing: Help by sharing your life experience
   home:
     index:
       ask_for_help: 'Ask for help with:'
       add_appointment: Add appointment
-      content_interpreter: We are looking permantantely for voluntary interpreters. Look into the open appointments
-      content_organisation: A refugee needs help with a tranlations, a doctors or goverment agency appointment. How can we help?
-      mission_statement: dolmatch quickly connects voluntary interpreters with refugees
+      mission_statement: Shexy quickly connects voluntary interpreters with refugees
       see_if_you_can_help: 'See if you can help:'
-      title_interpreter: You want to help?
-      title_organisation: You need help?
       see_appointments: See Appointments
+  footer:
+    copyright: 'Shexy / Spacehack Hackathon 2016'
   interpreter:
     appointments:
       index:
-        become_interpreter: Become an interpreter
-        sign_in_as_interpreter: Login
+        no_open_missions: No open missions
+        see_if_you_can_help: See if you can help somebody!
+      show:
+        appointment: '%{kind} appointment'
+        i_cant_help_you: "I'm sorry I can't help you"
+        ill_help_you: I will help you!
   interpreters:
     registrations:
       new:
         title: Become an interpreter
   organisation:
     appointments:
+      appointments:
+        finish_request: Mark Request as finsihed
       form:
         information_about_address: Information about meeting point
         information_about_refugee: Information about the refugee
         only_with_consent: Only with approval of the refugee. Only shown after the Interpreter assigned the appointment to himself/herself.
       index:
-        sign_in_as_organisation: Sign in as organisation
+        no_open_requests: No open requests
+        need_someone_for_translation: Needs someone to help you?
   organisations:
     registrations:
       new:
         title: Create organisation
+  shared:
+    navbar:
+      ask_for_help: Ask for help
+      find_a_mission: Find a mission
+      edit_profile: Edit Profile
+      logout: Logout
+      my_missions: My Mission
+      my_requests: My Requests
+      offer_help: Offer help

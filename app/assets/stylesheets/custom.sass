@@ -5,29 +5,75 @@ h1, h2
 h1
   color: $gray-light
   font-weight: lighter
-
-select.time
-  max-width: 40px
-  display: inline-block
+h2
+  margin-top: 50px
+  margin-bottom: 30px
 
 .header
+  color: $gray-lighter
   background: $primary-color
-  padding-top: 10px
-  padding-bottom: 10px
+  padding-top: 15px
+  padding-bottom: 15px
+  small
+    padding-left: 20px
+    vertical-align: sub
 
 .header.mission-statement
-  background-color: $gray-lighter
+  background-color: $gray-lightest
   font-family: 'roboto cond light'
   color: black
   font-size: 30px
 
 .footer
+  color: $gray-lighter
   background: $primary-color
-  padding-top: 10px
-  padding-bottom: 40px
+  margin-top: 50px
+  padding-top: 50px
+  padding-bottom: 50px
   width: 100%
 
+.panel.empty
+  background: $gray-lightest
+  padding-top: 30px
+  padding-bottom: 30px
+  a
+    margin-top: 30px
 
+nav
+  display: inline-block
+  ul > li
+    padding-left: 10px
+    padding-right: 10px
+    display: inline-block
+    list-style: none
+    a
+      color: $gray-lighter
+    >a:hover, &.active > a
+      color: white
+      text-decoration: none
+      border-bottom: 4px solid #00a6f6
+
+.panel.user
+  margin-top: 20px
+  padding: 20px
+  background: $gray-lightest
+
+.urgent
+  color: #ff5505
+
+.filters-head
+  font-size: 12px
+  text-transform: uppercase
+  margin-top: 10px
+  margin-bottom: 5px
+
+.filters-content
+  padding: 20px
+  background: $primary-color
+
+.row.information
+  margin-top: 20px
+  margin-bottom: 20px
 .devise-container
   max-width: 800px
   margin: auto

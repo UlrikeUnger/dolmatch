@@ -1,0 +1,15 @@
+@import 'variables'
+
+ul.pagination
+  li > span, li > a
+    margin-left: 10px
+  li > a, li > a:hover
+    color: black
+
+  li.active > span
+    background: $primary-color
+    border: 1px $primary-color solid
+    color: white
+    &:hover
+      border: 1px $gray-lighter solid
+      background: $gray-lighter

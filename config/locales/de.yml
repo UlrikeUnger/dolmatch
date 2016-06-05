@@ -1,4 +1,17 @@
 de:
+  appointment:
+    kinds:
+      job_center: Arbeitsamt
+      agency: Andere Ämter
+      education: Schule & Ausbildung
+      housing: Wohnung
+      doctor: Arzt
+      police: Polizei
+      law_issues: Gericht & Anwalt
+      others: Sonstiges
+  locales:
+    en: Englisch
+    de: Deutsch
   attributes:
   activerecord:
     attributes:
@@ -13,11 +26,14 @@ de:
         start_time_at: Anfangszeit
         end_time_at: bis ca. Endzeit
         description: Beschreibung
-        kind: Art des Termins
+        kind: Anfrage
         language_from: Übersetzen von
         language_to: Übersetzen nach
+        mission: Mission
+        time: Zeit
         start_time: Von
         venue: Treffpunkt
+        zip_or_city: Plz oder Stadt
       language_skill:
         locale: Sprache
         level: Niveau

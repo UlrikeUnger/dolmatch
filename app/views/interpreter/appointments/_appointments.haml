@@ -1,0 +1,23 @@
+.row
+  %h2= title
+  .col-lg-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %td= Appointment.human_attribute_name :language_from
+          %td= Appointment.human_attribute_name :mission
+          %td= Appointment.human_attribute_name :address
+          %td= Appointment.human_attribute_name :date_at
+          %td= Appointment.human_attribute_name :organisation
+          %td
+      %tbody
+        - appointments.each do |appointment|
+          %tr
+            %td= appointment.language_from
+            %td= appointment.kind
+            %td= "#{appointment.address.zip} #{appointment.address.city}"
+            %td= date_and_time appointment
+            %td
+              %span{data: {toggle: 'tooltip'}, title: appointment.organisation.phone_number}
+                = appointment.organisation.name
+            %td= link_with_icon(interpreter_appointment_path(appointment), 'eye', '', 'btn-dark')

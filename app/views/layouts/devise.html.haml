@@ -6,8 +6,25 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    .header
+      .container
+        .row
+          .col-md-6
+            = link_to root_path do
+              = image_tag 'logo.png'
+            %small= t('header.help_by_sharing')
+          .col-md-6.text-right
+            = render 'shared/navbar'
     .devise-container
       #notice
         = render 'shared/messages' if flash.any?
       .devise-views.text-left
         = yield
+
+    .footer
+      .container
+        .row
+          .col-md-12.text-center
+            .small
+              = fa_icon 'copyright'
+              = t('footer.copyright')

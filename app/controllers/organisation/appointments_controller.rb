@@ -1,10 +1,11 @@
 class Organisation::AppointmentsController < ApplicationController
   before_action :organisation, except: :index
-  before_action :appointment, only: [:edit, :update, :destroy, :show]
+  before_action :appointment, only: [:edit, :update, :destroy, :show, :move_to_done]
 
   def index
-    @search = current_organisation ? current_organisation.appointments.ransack(params[:q]) : Appointment.ransack(params[:q])
-    @appointments = @search.result.paginate(page: params[:page])
+    redirect_to root_path unless current_organisation
+    @search = current_organisation.appointments.ransack(params[:q])
+    @appointments = @search.result#.paginate(page: params[:page])
   end
 
   def new
@@ -32,6 +33,16 @@ class Organisation::AppointmentsController < ApplicationController
   def show
   end
 
+  def move_to_done
+    if @appointment.move_to_done
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.fail')
+    end
+
+    redirect_to organisation_appointments_path
+  end
+
   def update
     if @appointment.update(appointment_params)
       flash[:notice] = t('notification.save.success', model: Appointment.model_name.human)
@@ -42,6 +53,8 @@ class Organisation::AppointmentsController < ApplicationController
       render :edit
     end
   end
+
+
 
   def destroy
     if @appointment.destroy

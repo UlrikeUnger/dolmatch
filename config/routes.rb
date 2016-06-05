@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :interpreters
 
   root 'home#index'
+  patch '/language', to: 'languages#update'
 
   namespace :organisation do
-    resources :appointments
+    resources :appointments do
+      patch :move_to_done, on: :member
+    end
   end
 
   namespace :interpreter do

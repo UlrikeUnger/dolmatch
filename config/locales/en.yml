@@ -1,4 +1,17 @@
 en:
+  appointment:
+    kinds:
+      job_center: Job center
+      agency: public institutions
+      education: Education
+      housing: Housing
+      doctor: Medical Issues
+      police: Police
+      law_issues: Law issues
+      others: Others
+  locales:
+    en: English
+    de: German
   attributes:
   activerecord:
     attributes:
@@ -9,14 +22,17 @@ en:
         zip: Zip
       appointment:
         address: Address
-        date_at: Time
+        date_at: Date
         start_time_at: Start time
         end_time_at: approximately end time
         description: Description
-        kind: Mission
+        kind: Request
         language_from: language
         language_to: language to
+        mission: Mission
+        time: Time
         venue: Meeting point
+        zip_or_city: Zip code or city
       language_skill:
         locale: Language
         level: Level
@@ -26,9 +42,9 @@ en:
       appointment:
         one: Appointment
         other: Appointments
-      interpreter: Voluntary interpreter
+      interpreter: Volunteer
       language_skill: Language skills
-      organisation: Organisation
+      organisation: Help Seeker
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -65,5 +81,5 @@ en:
       other_than: must be other than %{count}
 
   will_paginate:
-    previous_label: '&#8592; Zurück'
-    next_label: 'Weiter &#8594;'
+    previous_label: '&#8592; Previous'
+    next_label: 'Next &#8594;'
