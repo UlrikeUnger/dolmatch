@@ -3,3 +3,4 @@ initLanguageSelect = ->
     e.target.closest('form').submit()
 
 $(document).ready(initLanguageSelect)
+$(document).on('page:load', initLanguageSelect)
