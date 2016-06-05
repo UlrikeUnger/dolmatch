@@ -18,7 +18,7 @@ class Organisation::AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params.merge(organisation: @organisation))
 
     if @appointment.save
-      redirect_to organisation_appointments_path(@appointment)
+      redirect_to organisation_appointments_path
     else
       @appointment.build_address unless @appointment.address
       @appointment.build_refugee unless @appointment.refugee
