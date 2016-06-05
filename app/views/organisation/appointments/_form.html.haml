@@ -4,9 +4,9 @@
   = f.input :end_time_at, minute_step: 15
   = f.input :description
   = f.input :kind, collection: Appointment::KINDS
-  = f.input :language_to, collection: [:de, :en],
+  = f.input :language_to, collection: [:de, :en, :urdu, :farsi, :albanian],
   prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
-  = f.input :language_from, collection: [:de, :en],
+  = f.input :language_from, collection: [:de, :en, :urdu, :farsi, :albanian],
   prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
 
   %h2= t('.information_about_address')
