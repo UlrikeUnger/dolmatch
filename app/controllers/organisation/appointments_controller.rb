@@ -5,7 +5,7 @@ class Organisation::AppointmentsController < ApplicationController
   def index
     redirect_to root_path unless current_organisation
     @search = current_organisation.appointments.ransack(params[:q])
-    @appointments = @search.result#.paginate(page: params[:page])
+    @appointments = @search.result
   end
 
   def new
@@ -76,7 +76,7 @@ class Organisation::AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:start_time, :end_time, :date_at, :kind, :description,
+    params.require(:appointment).permit(:start_time_at, :end_time_at, :date_at, :kind, :description,
     :venue, :language_to, :language_from,
     address_attributes: [:id, :street, :zip, :city, :house_number],
     refugee_attributes: [:name, :phone_number, :country_of_origin])
