@@ -33,7 +33,7 @@ de:
         time: Zeit
         start_time: Von
         venue: Treffpunkt
-        zip_or_city: Plz oder Stadt
+        zip_or_city: PLZ oder Stadt
       language_skill:
         locale: Sprache
         level: Niveau
