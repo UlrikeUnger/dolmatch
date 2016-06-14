@@ -11,7 +11,7 @@
           = f.input :radius
 
           = f.simple_fields_for :language_skills do |language_skill|
-            = render 'language_skill_fields', f: language_skill
+            = render 'interpreters/registrations/language_skill_fields', f: language_skill
           .links
             = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
             :language_skills, class: 'btn btn-default btn-sm'

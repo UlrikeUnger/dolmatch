@@ -11,8 +11,7 @@
         .row
           .col-md-4
             = link_to root_path do
-              = image_tag 'logo.png'
-            %small= t('header.help_by_sharing')
+              = image_tag 'dolmatch.png'
           .col-md-8.text-right
             = render 'shared/navbar'
 
@@ -32,7 +31,6 @@
     .footer
       .container
         .row
-          .col-md-12.text-center
-            .small
-              = fa_icon 'copyright'
-              = t('footer.copyright')
+          .col-md-12
+            = link_to root_path do
+              = image_tag 'dolmatch.png'

@@ -9,12 +9,12 @@
     .header
       .container
         .row
-          .col-md-6
+          .col-md-4
             = link_to root_path do
-              = image_tag 'logo.png'
-            %small= t('header.help_by_sharing')
-          .col-md-6.text-right
+              = image_tag 'dolmatch.png'
+          .col-md-8.text-right
             = render 'shared/navbar'
+
     .devise-container
       #notice
         = render 'shared/messages' if flash.any?
@@ -24,7 +24,6 @@
     .footer
       .container
         .row
-          .col-md-12.text-center
-            .small
-              = fa_icon 'copyright'
-              = t('footer.copyright')
+          .col-md-12
+            = link_to root_path do
+              = image_tag 'dolmatch.png'

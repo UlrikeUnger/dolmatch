@@ -54,8 +54,6 @@ class Organisation::AppointmentsController < ApplicationController
     end
   end
 
-
-
   def destroy
     if @appointment.destroy
       flash[:notice] = t('notification.destroy.success', model: Appointment.model_name.human)

@@ -17,10 +17,12 @@ de:
     help_by_sharing: Hilfe mit deiner Erfahrung
   home:
     index:
-      ask_for_help: 'Um Hilfe fragen mit:'
       add_appointment: Termin erstellen
-      mission_statement: Shexy bringt ehrenamtliche Dolmetscher und Geflüchtete schnell zusammen
-      see_if_you_can_help: Wo kannst du helfen?
+      content_interpreter: We are looking permantantely for voluntary interpreters. Look into the open appointments
+      content_organisation: A refugee needs help with a tranlations, a doctors or goverment agency appointment. How can we help?
+      mission_statement: dolmatch quickly connects voluntary interpreters with refugees
+      title_interpreter: You want to help?
+      title_organisation: You need help?
       see_appointments: Termin finden
   footer:
     copyright: 'Shexy / Spacehack Hackathon 2016'
