@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :interpreter do
     resources :appointments, only: [:index, :show, :update] do
       patch :assign, on: :member
+      get :search, on: :collection
     end
   end
 

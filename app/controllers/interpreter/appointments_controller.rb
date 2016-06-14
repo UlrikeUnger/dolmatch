@@ -3,7 +3,16 @@ class Interpreter::AppointmentsController < ApplicationController
   before_action :general_appointment, only: [:assign, :show]
 
   def index
-    @appointments = Appointment.with_status([:assigned, :done]).where(interpreter: current_interpreter)
+    if current_interpreter
+      @appointments = Appointment.with_status([:assigned, :done]).where(interpreter: current_interpreter)
+    else
+      redirect_to search_interpreter_appointments_path
+    end
+  end
+
+  def search
+    @search = Appointment.with_status(:available).order(:date_at).ransack(params[:q])
+    @appointments = @search.result.paginate(page: params[:page])
   end
 
   def show
