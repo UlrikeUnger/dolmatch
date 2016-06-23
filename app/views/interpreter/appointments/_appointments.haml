@@ -14,10 +14,10 @@
         - appointments.each do |appointment|
           %tr
             %td= appointment.language_from
-            %td= appointment.kind
+            %td= t("appointments.kind.#{appointment.kind}")
             %td= "#{appointment.address.zip} #{appointment.address.city}"
             %td= date_and_time appointment
             %td
               %span{data: {toggle: 'tooltip'}, title: appointment.organisation.phone_number}
                 = appointment.organisation.name
-            %td= link_with_icon(interpreter_appointment_path(appointment), 'eye', '', 'btn-dark')
+            %td= link_with_icon(interpreter_appointment_path(appointment), 'eye', '', 'btn btn-info')

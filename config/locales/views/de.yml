@@ -20,6 +20,13 @@ de:
       add_appointment: Termin erstellen
       content_interpreter: We are looking permantantely for voluntary interpreters. Look into the open appointments
       content_organisation: A refugee needs help with a tranlation, a doctors or goverment agency appointment. How can we help?
+      description_one: Erster Beschreibungstext fast genauso wichtig wie die folgenden zwei Texte
+      description_two: Zweiter Text, der erklärt worum es geht, und auch wichtig
+      description_three: Und der letzte alles vermittelnde Text. Danach kann man dolmatch super bedienen
+      headline_one: Überschrift Eins
+      headline_two: Überschrift Zwei
+      headline_three: Überschrift Drei
+      how_to_help: Wie funktioniert dolmatch, wie kannst Du aktiv helfen?
       mission_statement: dolmatch quickly connects voluntary interpreters with refugees
       title_interpreter: You want to help?
       title_organisation: You need help?

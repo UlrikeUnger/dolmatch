@@ -31,7 +31,7 @@
         - appointments.each do |appointment|
           %tr
             %td= appointment.language_from
-            %td= appointment.kind
+            %td= t("appointments.kind.#{appointment.kind}")
             %td= "#{appointment.address.zip} #{appointment.address.city}"
             %td{class: (appointment.date_at == Date.today) ? 'urgent' : ''}
               = date_and_time appointment

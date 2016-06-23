@@ -12,14 +12,12 @@
         .container
           .row
             .col-lg-6= image_tag 'dolmatch.png'
-            .col-lg-6.text-right
-              - if current_interpreter
-                = link_to 'Logout', destroy_interpreter_session_path, data: {method: :delete}
-              - elsif current_organisation
-                = link_to 'Edit', edit_organisation_path(current_organisation)
-                = link_to 'Logout', destroy_organisation_session_path, data: {method: :delete}
+            .col-lg-6.text-right= render 'shared/navbar'
 
       .container
         .row
-          .col-lg-12.text-center
-            = yield
+          .col-lg-12.text-center= yield :big_picture
+
+    .container
+      .row
+        .col-lg-12.text-center= yield

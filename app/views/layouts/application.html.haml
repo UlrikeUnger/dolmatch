@@ -16,13 +16,6 @@
           .col-md-8.text-right
             = render 'shared/navbar'
 
-    - if content_for?(:mission_statement)
-      .header.mission-statement
-        .container
-          .row
-            .col-md-12.text-center
-              = yield(:mission_statement)
-
     .container
       #notice
         = render 'shared/messages' if flash.any?

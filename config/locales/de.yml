@@ -46,6 +46,12 @@ de:
       interpreter: Ehrenamtliche Dolmetscher/innen
       language_skill: Sprachkenntnisse
       organisation: Sozialträger
+    state_machines:
+      appointment:
+        states:
+          available: Verfügbar
+          assigned: Zugewiesen
+          done: Statt Gefunden
   errors:
     format: "%{attribute} %{message}"
     messages:
