@@ -17,20 +17,32 @@ de:
     help_by_sharing: Hilfe mit deiner Erfahrung
   home:
     index:
-      add_appointment: Termin erstellen
-      content_interpreter: We are looking permantantely for voluntary interpreters. Look into the open appointments
-      content_organisation: A refugee needs help with a tranlation, a doctors or goverment agency appointment. How can we help?
-      description_one: Erster Beschreibungstext fast genauso wichtig wie die folgenden zwei Texte
-      description_two: Zweiter Text, der erklärt worum es geht, und auch wichtig
-      description_three: Und der letzte alles vermittelnde Text. Danach kann man dolmatch super bedienen
-      headline_one: Überschrift Eins
-      headline_two: Überschrift Zwei
-      headline_three: Überschrift Drei
+      add_appointment: Termin einstellen
+      content_interpreter: Wenn Du mit Deinen Sprachkenntnissen helfen willst, findest Du hier offene Termine oder wirst automatisch per Email benachrichtigt.
+      content_organisation: 'Ob Amt oder Arzt: Stelle hier Dein Anfrage ein, damit wir schnell einen Übersetzer für Dich finden können.'
+      description_one: >
+        'Geflüchtete verlieren aufgrund von Sprachbarrieren Zeit und Rechte.
+        Dolmatch bringt ehrenamtliche Übersetzer und Geflüchtete schnell zusammen.
+        Heimleiter und Sozialarbeiter können schnell und einfach Termine für Geflüchtete eintragen und verwalten.
+        Übersetzer erhalten je nach Sprachkenntnissen und Region automatisch eine Email, wenn eine neue Übersetzungsanfrage eingeht.
+        Erst bei einer positiven Vermittlung bekommt der Übersetzer die Kontaktdaten des Hilfesuchenden.'
+      description_two: >
+        'Man muss nicht gleich Urdu oder Farsi sprechen, um als “Dolmatcher” anzufangen.
+        In vielen Fällen kann Geflüchteten auch mit Englisch geholfen werden.
+        Schau einfach in der Terminübersicht nach, welche Sprachen in Deiner Region gesucht werden.
+        Ob Student, Rentner oder Ex-Geflüchteter: jeder kann mitmachen. Und dabei gibt es keinerlei zeitliche Verpflichtung.
+        Du kannst 1x im Jahr oder 1x in der Woche helfen. So wie es Dir in Deinen Zeitplan passt.'
+      description_three: >
+        'Wir sind eine Gruppe von ehrenamtlichen Entwicklern, User Experience Experten und Produktmanagern,
+        die seit Dezember 2015 gemeinsam mit Dolmetschern und sozialen Trägern an Dolmatch arbeiten.'
+      headline_one: Was macht Dolmatch?
+      headline_two: Kann ich helfen?
+      headline_three: Wer steckt hinter Dolmatch?
       how_to_help: Wie funktioniert dolmatch, wie kannst Du aktiv helfen?
       mission_statement: dolmatch quickly connects voluntary interpreters with refugees
-      title_interpreter: You want to help?
-      title_organisation: You need help?
-      see_appointments: Termin finden
+      title_interpreter: Du kannst übersetzen?
+      title_organisation: Du suchst einen Übersetzer?
+      see_appointments: Termine finden
   footer:
     copyright: 'Shexy / Spacehack Hackathon 2016'
   interpreter:
