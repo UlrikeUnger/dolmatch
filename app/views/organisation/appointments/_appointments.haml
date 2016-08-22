@@ -1,9 +1,35 @@
 - if appointments.empty?
   = render 'empty_scope'
+
 - else
-  - if appointments.with_status(:assigned).empty?
-    = render 'empty_scope'
-  - else
+  - if appointments.with_status(:available).any?
+    .row
+      .col-lg-12
+        %h2= Appointment.human_status_name(:available)
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %td= Appointment.human_attribute_name :language_from
+              %td= Appointment.human_attribute_name :title
+              %td= Appointment.human_attribute_name :kind
+              %td= Appointment.human_attribute_name :address
+              %td= Appointment.human_attribute_name :date_at
+              %td
+              %td= t('edit', model: '')
+              %td
+
+          %tbody
+            - appointments.with_status(:available).each do |appointment|
+              %tr
+                %td= appointment.language_from
+                %td= appointment.title
+                %td= t("appointment.kinds.#{appointment.kind}")
+                %td= "#{appointment.address.zip} #{appointment.address.city}"
+                %td= date_and_time appointment
+                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')
+                %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn btn-info')
+
+  - if appointments.with_status(:assigned).any?
     .row
       .col-lg-12
         %h2= Appointment.human_status_name(:assigned)
@@ -11,6 +37,7 @@
           %thead
             %tr
               %td= Appointment.human_attribute_name :language_from
+              %td= Appointment.human_attribute_name :title
               %td= Appointment.human_attribute_name :kind
               %td= Appointment.human_attribute_name :address
               %td= Appointment.human_attribute_name :date_at
@@ -25,7 +52,8 @@
             - appointments.with_status(:assigned).each do |appointment|
               %tr
                 %td= appointment.language_from
-                %td= t("appointments.kind.#{appointment.kind}")
+                %td= appointment.title
+                %td= t("appointment.kinds.#{appointment.kind}")
                 %td= "#{appointment.address.zip} #{appointment.address.city}"
                 %td= date_and_time appointment
                 %td
@@ -38,32 +66,6 @@
                 %td
                   = link_with_icon(organisation_appointment_path(appointment), 'trash', '', 'btn btn-danger',
                   data: { method: 'DELETE', confirm: t('confirm_destroy') })
-
-  - if appointments.with_status(:available).any?
-    .row
-      .col-lg-12
-        %h2= Appointment.human_status_name(:available)
-        %table.table.table-striped.table-hover
-          %thead
-            %tr
-              %td= Appointment.human_attribute_name :language_from
-              %td= Appointment.human_attribute_name :kind
-              %td= Appointment.human_attribute_name :address
-              %td= Appointment.human_attribute_name :date_at
-              %td
-              %td= t('edit', model: '')
-              %td
-
-          %tbody
-            - appointments.with_status(:available).each do |appointment|
-              %tr
-                %td= appointment.language_from
-                %td= t("appointments.kind.#{appointment.kind}")
-                %td= "#{appointment.address.zip} #{appointment.address.city}"
-                %td= date_and_time appointment
-                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')
-                %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn btn-info')
-
   - if appointments.with_status(:done).any?
     .row
       .col-lg-12
@@ -72,6 +74,7 @@
           %thead
             %tr
               %td= Appointment.human_attribute_name :language_from
+              %td= Appointment.human_attribute_name :title
               %td= Appointment.human_attribute_name :kind
               %td= Appointment.human_attribute_name :address
               %td= Appointment.human_attribute_name :date_at
@@ -82,7 +85,8 @@
             - appointments.with_status(:done).each do |appointment|
               %tr
                 %td= appointment.language_from
-                %td= t("appointments.kind.#{appointment.kind}")
+                %td= appointment.title
+                %td= t("appointment.kinds.#{appointment.kind}")
                 %td= "#{appointment.address.zip} #{appointment.address.city}"
                 %td= date_and_time appointment
                 %td

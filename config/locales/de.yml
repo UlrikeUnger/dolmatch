@@ -31,6 +31,7 @@ de:
         language_to: Übersetzen nach
         mission: Mission
         time: Zeit
+        title: Titel
         start_time: Von
         venue: Treffpunkt
         zip_or_city: PLZ oder Stadt
@@ -39,6 +40,10 @@ de:
         level: Niveau
       organisation:
         name: Name der Einrichtung
+      refugee:
+        country_of_origin: Herkunftsland
+        name: Name
+        phone_number: Telefonnummer
     models:
       appointment:
         one: Termin

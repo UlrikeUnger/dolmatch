@@ -5,6 +5,6 @@
     = t('.see_if_you_can_help')
     %div= link_to t('find_a_mission'), root_path, class: 'btn btn-primary'
 - else
-  = render 'appointments', appointments: @appointments.with_status(:assigned), title: t('appointments.status.assigned')
+  = render 'appointments', appointments: @appointments.with_status(:assigned), title: Appointment.human_status_name(:assigned)
   - if @appointments.with_status(:done).any?
-    = render 'appointments', appointments: @appointments.with_status(:done), title: t('appointments.status.done')
+    = render 'appointments', appointments: @appointments.with_status(:done), title: Appointment.human_status_name(:done)

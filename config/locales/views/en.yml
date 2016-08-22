@@ -1,12 +1,12 @@
 en:
   add: 'Add %{model}'
-  ask_for_help: Ask for help
+  add_appointment: Ask for help
   confirm_destroy: 'Are you sure?'
   create: Create
   destroy: 'Delete %{model}'
   edit: 'Edit %{model}'
   filters: Filters
-  find_a_mission: Find a mission
+  find_a_mission: Find a appointment
   open_appointments: '%{count} open appointments'
   personal_data: Login data
   save: Save
@@ -17,8 +17,6 @@ en:
     help_by_sharing: Help by sharing your life experience
   home:
     index:
-      ask_for_help: 'Ask for help with:'
-      add_appointment: Add appointment
       mission_statement: dolmatch quickly connects voluntary interpreters with refugees
       see_if_you_can_help: 'See if you can help:'
       see_appointments: See Appointments
@@ -45,16 +43,14 @@ en:
         information_about_address: Information about meeting point
         information_about_refugee: Information about the refugee
         only_with_consent: Only with approval of the refugee. Only shown after the Interpreter assigned the appointment to himself/herself.
-      index:
+      empty_scope:
         no_open_requests: No open requests
-        need_someone_for_translation: Needs someone to help you?
   organisations:
     registrations:
       new:
         title: Create organisation
   shared:
     navbar:
-      ask_for_help: Ask for help
       find_a_mission: Find a mission
       edit_profile: Edit Profile
       logout: Logout

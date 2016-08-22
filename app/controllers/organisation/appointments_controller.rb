@@ -75,7 +75,7 @@ class Organisation::AppointmentsController < ApplicationController
 
   def appointment_params
     params.require(:appointment).permit(:start_time_at, :end_time_at, :date_at, :kind, :description,
-    :venue, :language_to, :language_from,
+    :venue, :language_to, :language_from, :title,
     address_attributes: [:id, :street, :zip, :city, :house_number],
     refugee_attributes: [:name, :phone_number, :country_of_origin])
   end

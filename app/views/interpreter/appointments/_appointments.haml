@@ -5,6 +5,7 @@
       %thead
         %tr
           %td= Appointment.human_attribute_name :language_from
+          %td= Appointment.human_attribute_name :title
           %td= Appointment.human_attribute_name :mission
           %td= Appointment.human_attribute_name :address
           %td= Appointment.human_attribute_name :date_at
@@ -14,7 +15,8 @@
         - appointments.each do |appointment|
           %tr
             %td= appointment.language_from
-            %td= t("appointments.kind.#{appointment.kind}")
+            %td= appointment.title
+            %td= t("appointment.kinds.#{appointment.kind}")
             %td= "#{appointment.address.zip} #{appointment.address.city}"
             %td= date_and_time appointment
             %td

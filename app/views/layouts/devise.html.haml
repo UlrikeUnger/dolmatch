@@ -22,9 +22,4 @@
       .devise-views.text-left
         = yield
 
-    .footer
-      .container
-        .row
-          .col-md-12
-            = link_to root_path do
-              = image_tag 'dolmatch.png'
+    .footer= render 'shared/footer'

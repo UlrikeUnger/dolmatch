@@ -32,8 +32,9 @@ class Appointment < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :refugee, reject_if: :all_blank
 
-  validates :venue, :kind, :organisation, :address, :date_at,
+  validates :venue, :organisation, :address, :date_at, :title,
   :language_from, :start_time_at, :language_to, presence: true
+  validates :kind, presence: true#, inclusion: { in: KINDS }
 
   scope :accessable, -> (current_interpreter) { where("status = 'available' OR interpreter_id = ?", current_interpreter) }
 

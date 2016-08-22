@@ -2,12 +2,13 @@
   = f.input :date_at, as: :string, input_html: { class: 'date-picker' }
   = f.input :start_time_at, minute_step: 15
   = f.input :end_time_at, minute_step: 15
+  = f.input :title
   = f.input :description
-  = f.input :kind, collection: Appointment::KINDS
-  = f.input :language_to, collection: [:de, :en, :urdu, :farsi, :albanian],
-  prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
+  = f.input :kind, collection: Appointment::KINDS, label_method:-> (kind) { t("appointment.kinds.#{kind}")}
   = f.input :language_from, collection: [:de, :en, :urdu, :farsi, :albanian],
   prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
+  = f.input :language_to, collection: [:de, :en, :urdu, :farsi, :albanian],
+  prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
 
   %h2= t('.information_about_address')
   = f.input :venue

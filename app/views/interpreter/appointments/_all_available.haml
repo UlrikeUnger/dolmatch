@@ -4,14 +4,15 @@
       .filters-head= t 'filters'
       .filters-content
         = search_form_for search, url: root_path do |f|
-          = f.input :language_to, collection: [:de, :en, :urdu, :farsi, :albanian],
-          prompt: t('select', attribute: Appointment.human_attribute_name(:language_to)),
-          label: Appointment.human_attribute_name(:language_to)
           = f.input :language_from, collection: [:de, :en, :urdu, :farsi, :albanian],
           prompt: t('select', attribute: Appointment.human_attribute_name(:language_from)),
           label: Appointment.human_attribute_name(:language_from)
+          = f.input :language_to, collection: [:de, :en, :urdu, :farsi, :albanian],
+          prompt: t('select', attribute: Appointment.human_attribute_name(:language_to)),
+          label: Appointment.human_attribute_name(:language_to)
           = f.input :address_zip_or_address_city_cont,
           placeholder: Appointment.human_attribute_name(:address), label: Appointment.human_attribute_name(:zip_or_city)
+          = f.input :title_cont
           = f.input :kind_eq, collection: t("appointment.kinds").invert,
           prompt: t('select', attribute: Appointment.human_attribute_name(:kind)),
           label: Appointment.human_attribute_name(:kind)

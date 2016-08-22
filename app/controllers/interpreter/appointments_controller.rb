@@ -4,7 +4,7 @@ class Interpreter::AppointmentsController < ApplicationController
 
   def index
     if current_interpreter
-      @appointments = Appointment.with_status([:assigned, :done]).where(interpreter: current_interpreter)
+      @appointments = Appointment.with_status([:assigned, :done]).where(interpreter: current_interpreter).order(date_at: :desc)
     else
       redirect_to search_interpreter_appointments_path
     end

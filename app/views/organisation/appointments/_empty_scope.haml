@@ -1,5 +1,5 @@
 %h1= Appointment.human_status_name(:assigned)
 .panel.empty.text-center
   %h1= t('.no_open_requests')
-  = t('.need_someone_for_translation')
-  = link_to t('ask_for_help'), new_organisation_appointment_path, class: 'btn btn-primary'
+  .row
+    .col-lg-12= link_to t('add_appointment'), new_organisation_appointment_path, class: 'btn btn-primary'

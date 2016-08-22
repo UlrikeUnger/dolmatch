@@ -1,12 +1,12 @@
 de:
   add: '%{model} hinzufügen'
-  ask_for_help: Hilfe ersuchen
+  add_appointment: Termin einstellen
   confirm_destroy: 'Wirklich löschen?'
   create: Anlegen
   destroy: '%{model} löschen'
   edit: '%{model} bearbeiten'
   filters: Filters
-  find_a_mission: Mision suchen / finden
+  find_a_mission: Termin finden
   open_appointments: '%{count} Offene Termine'
   personal_data: Anmeldedaten
   save: Speichern
@@ -17,7 +17,6 @@ de:
     help_by_sharing: Hilfe mit deiner Erfahrung
   home:
     index:
-      add_appointment: Termin einstellen
       content_interpreter: Wenn Du mit Deinen Sprachkenntnissen helfen willst, findest Du hier offene Termine oder wirst automatisch per Email benachrichtigt.
       content_organisation: 'Ob Amt oder Arzt: Stelle hier Dein Anfrage ein, damit wir schnell einen Übersetzer für Dich finden können.'
       description_one: >
@@ -38,11 +37,10 @@ de:
       headline_one: Was macht Dolmatch?
       headline_two: Kann ich helfen?
       headline_three: Wer steckt hinter Dolmatch?
-      how_to_help: Wie funktioniert dolmatch, wie kannst Du aktiv helfen?
+      i_want_to_help: Ich will helfen
       mission_statement: dolmatch quickly connects voluntary interpreters with refugees
       title_interpreter: Du kannst übersetzen?
       title_organisation: Du suchst einen Übersetzer?
-      see_appointments: Termine finden
   footer:
     copyright: 'Shexy / Spacehack Hackathon 2016'
   interpreter:
@@ -62,20 +60,18 @@ de:
     appointments:
       appointments:
         finish_request: Termin als beendet markieren
+      empty_scope:
+        no_open_requests: Keine offenen Termine
       form:
         information_about_address: Angaben zum Treffpunkt
         information_about_refugee: Angaben zum Geflüchten
         only_with_consent: Nur mit Zustimmung des Geflüchteten, wird angezeigt nachdem der freiwillige Dolmetscher den Termin übernommen hat
-      index:
-        sign_in_as_organisation: Als sozialer Träger anmelden
   organisations:
     registrations:
       new:
         title: Organisation anlegen
   shared:
     navbar:
-      ask_for_help: Termin einstellen
-      find_a_mission: Einen Termin finden
       edit_profile: Profil editieren
       logout: Logout
       my_missions: Meine Termine

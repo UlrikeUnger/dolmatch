@@ -31,6 +31,7 @@ en:
         language_to: language to
         mission: Mission
         time: Time
+        title: Title
         venue: Meeting point
         zip_or_city: Zip code or city
       language_skill:
@@ -38,6 +39,10 @@ en:
         level: Level
       organisation:
         name: Name of organisation
+      refugee:
+        country_of_origin: Country of origin
+        name: Name
+        phone_number: Phone number
     models:
       appointment:
         one: Appointment
