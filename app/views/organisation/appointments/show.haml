@@ -8,8 +8,13 @@
     = "#{Appointment.human_attribute_name(:kind)}: " + t("appointment.kinds.#{@appointment.kind}")
 
 .row
-  .col-lg-12
-    %h2= @appointment.title
+  %h2
+    .col-lg-8
+      = @appointment.title
+    .col-lg-4.text-right
+      - if @appointment.assigned?
+        = link_to(t('.finish_request'), move_to_done_organisation_appointment_path(@appointment),
+        class: 'btn btn-primary', data: {method: :patch})
 
 .row
   .col-lg-8

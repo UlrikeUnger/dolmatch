@@ -58,14 +58,14 @@ de:
         title: Freiwilliger Dolmatcher werden
   organisation:
     appointments:
-      appointments:
-        finish_request: Termin als beendet markieren
       empty_scope:
         no_open_requests: Keine offenen Termine
       form:
         information_about_address: Angaben zum Treffpunkt
         information_about_refugee: Angaben zum Geflüchten
         only_with_consent: Nur mit Zustimmung des Geflüchteten, wird angezeigt nachdem der freiwillige Dolmetscher den Termin übernommen hat
+      show:
+        finish_request: Termin als beendet markieren
   organisations:
     registrations:
       new:

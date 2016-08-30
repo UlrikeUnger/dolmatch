@@ -37,14 +37,14 @@ en:
         title: Become an interpreter
   organisation:
     appointments:
-      appointments:
-        finish_request: Mark Request as finsihed
+      empty_scope:
+        no_open_requests: No open requests
       form:
         information_about_address: Information about meeting point
         information_about_refugee: Information about the refugee
         only_with_consent: Only with approval of the refugee. Only shown after the Interpreter assigned the appointment to himself/herself.
-      empty_scope:
-        no_open_requests: No open requests
+      show:
+        finish_request: Mark Request as finsihed
   organisations:
     registrations:
       new:

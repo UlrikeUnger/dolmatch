@@ -43,7 +43,6 @@
               %td= Appointment.human_attribute_name :date_at
               %td= Interpreter.model_name.human
               %td
-              %td
               %td= t('edit', model: '')
               %td= t('destroy', model: '')
               %td
@@ -59,8 +58,6 @@
                 %td
                   %span{data: {toggle: 'tooltip'}, title: appointment.interpreter.phone_number}
                     = appointment.interpreter.name
-                %td= link_to(t('.finish_request'), move_to_done_organisation_appointment_path(appointment),
-                class: 'btn btn-primary', data: {method: :patch})
                 %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')
                 %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn btn-info')
                 %td
