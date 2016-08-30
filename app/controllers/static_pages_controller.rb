@@ -1,6 +1,6 @@
-class HomeController < ApplicationController
-  def index
+class StaticPagesController < ApplicationController
 
+  def home
     if current_organisation
       redirect_to organisation_appointments_path
     elsif current_interpreter
@@ -10,5 +10,14 @@ class HomeController < ApplicationController
     else
       render layout: 'landing_page'
     end
+  end
+
+  def imprint
+  end
+
+  def contact
+  end
+
+  def terms_and_conditions
   end
 end

@@ -3,7 +3,7 @@
     .filters
       .filters-head= t 'filters'
       .filters-content
-        = search_form_for search, url: root_path do |f|
+        = search_form_for search, url: root_path, defaults: { required: false } do |f|
           = f.input :language_from, collection: [:de, :en, :urdu, :farsi, :albanian],
           prompt: t('select', attribute: Appointment.human_attribute_name(:language_from)),
           label: Appointment.human_attribute_name(:language_from)

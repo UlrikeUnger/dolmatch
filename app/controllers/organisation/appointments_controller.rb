@@ -5,6 +5,7 @@ class Organisation::AppointmentsController < ApplicationController
   def index
     redirect_to root_path unless current_organisation
     @search = current_organisation.appointments.ransack(params[:q])
+    @search.sorts = 'date_at desc' if @search.sorts.empty?
     @appointments = @search.result
   end
 

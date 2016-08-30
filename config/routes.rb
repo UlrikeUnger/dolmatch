@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :organisations
   devise_for :interpreters
 
-  root 'home#index'
+  get  'static_pages/imprint'
+  get  'static_pages/contact'
+  get  'static_pages/terms_and_conditions'
+  root 'static_pages#home'
   patch '/language', to: 'languages#update'
 
   namespace :organisation do
