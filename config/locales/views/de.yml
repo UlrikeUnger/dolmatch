@@ -15,8 +15,8 @@ de:
 
   header:
     help_by_sharing: Hilfe mit deiner Erfahrung
-  home:
-    index:
+  static_pages:
+    home:
       content_interpreter: Wenn Du mit Deinen Sprachkenntnissen helfen willst, findest Du hier offene Termine oder wirst automatisch per Email benachrichtigt.
       content_organisation: 'Ob Amt oder Arzt: Stelle hier Dein Anfrage ein, damit wir schnell einen Übersetzer für Dich finden können.'
       description_one: >

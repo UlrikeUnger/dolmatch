@@ -15,8 +15,8 @@ en:
 
   header:
     help_by_sharing: Help by sharing your life experience
-  home:
-    index:
+  static_pages:
+    home:
       mission_statement: dolmatch quickly connects voluntary interpreters with refugees
       see_if_you_can_help: 'See if you can help:'
       see_appointments: See Appointments
