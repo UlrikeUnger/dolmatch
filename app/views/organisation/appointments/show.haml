@@ -1,0 +1,69 @@
+%h5.row
+  .col-lg-6
+    = l (@appointment.date_at)
+    = l(@appointment.start_time_at, format: :short)
+    = " - #{ l(@appointment.end_time_at, format: :short) }" if @appointment.end_time_at
+
+  .col-lg-6.text-right
+    = "#{Appointment.human_attribute_name(:kind)}: " + t("appointment.kinds.#{@appointment.kind}")
+
+.row
+  .col-lg-12
+    %h2= @appointment.title
+
+.row
+  .col-lg-8
+    %h3= Appointment.model_name.human
+    %dl
+      %dt= Appointment.human_attribute_name(:description)
+      %dd= @appointment.description
+
+      %dt= Appointment.human_attribute_name(:language_from)
+      %dd= @appointment.language_from
+
+      %dt= Appointment.human_attribute_name(:language_to)
+      %dd= @appointment.language_to
+
+    %h3= Appointment.human_attribute_name(:venue)
+
+    %address
+      %strong= @appointment.venue
+      %br
+      = "#{@appointment.address.street} #{@appointment.address.house_number}"
+      %br
+      = "#{@appointment.address.zip} #{@appointment.address.city}"
+
+    %h3= Refugee.model_name.human
+
+    %dl
+      %dt= Refugee.human_attribute_name(:name)
+      %dd= @appointment.refugee.name
+
+      %dt= Refugee.human_attribute_name(:phone_number)
+      %dd= @appointment.refugee.phone_number
+
+      %dt= Refugee.human_attribute_name(:country_of_origin)
+      %dd= @appointment.refugee.country_of_origin
+
+  .col-lg-4
+    - if @appointment.interpreter
+      .panel.user
+        %h4= Interpreter.model_name.human
+        - if @appointment.interpreter.name
+          .div
+            = fa_icon 'user'
+            %span= @appointment.interpreter.name
+        - if @appointment.interpreter.phone_number
+          .div
+            = fa_icon 'phone'
+            = @appointment.interpreter.phone_number
+        %table
+          %tr
+            %td= fa_icon 'flag'
+            %td
+          - @appointment.interpreter.language_skills.each do |ls|
+            %tr
+              %td
+              %td
+                = ls.locale
+                = ls.level

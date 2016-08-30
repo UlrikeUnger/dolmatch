@@ -26,7 +26,7 @@ de:
         start_time_at: Anfangszeit
         end_time_at: bis ca. Endzeit
         description: Beschreibung
-        kind: Thema des Termins
+        kind: Thema
         language_from: Übersetzen von
         language_to: Übersetzen nach
         mission: Mission
@@ -49,8 +49,9 @@ de:
         one: Termin
         other: Termine
       interpreter: Ehrenamtliche Dolmetscher/innen
+      refugee: Geflüchteter
       language_skill: Sprachkenntnisse
-      organisation: Sozialträger
+      organisation: Sozialer Träger
     state_machines:
       appointment:
         states:

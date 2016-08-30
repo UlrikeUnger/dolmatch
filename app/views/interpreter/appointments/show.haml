@@ -1,0 +1,64 @@
+%h5.row.summary-header
+  .col-lg-6
+    = l (@appointment.date_at)
+    = l(@appointment.start_time_at, format: :short)
+    = " - #{ l(@appointment.end_time_at, format: :short) }" if @appointment.end_time_at
+
+  .col-lg-6.text-right
+    = "#{Appointment.human_attribute_name(:kind)}: " + t("appointment.kinds.#{@appointment.kind}")
+
+.row
+  %h2
+    .col-lg-8
+      = @appointment.title
+    .col-lg-4.text-right
+      - if @appointment.available?
+        = link_to t('.ill_help_you'), assign_interpreter_appointment_path(@appointment),
+        class: 'btn btn-primary', data: {method: :patch}
+      - if @appointment.assigned?
+        = link_to t('.i_cant_help_you'), interpreter_appointment_path(@appointment, event: :unassign),
+        class: 'btn btn-primary', data: {method: :patch}
+
+.row
+  .col-lg-8
+    %h3= Appointment.model_name.human
+    %dl
+      %dt= Appointment.human_attribute_name(:description)
+      %dd= @appointment.description
+
+      %dt= Appointment.human_attribute_name(:language_from)
+      %dd= @appointment.language_from
+
+      %dt= Appointment.human_attribute_name(:language_to)
+      %dd= @appointment.language_to
+
+    %h3= Appointment.human_attribute_name(:venue)
+
+    %address
+      %strong= @appointment.venue
+      %br
+      = "#{@appointment.address.street} #{@appointment.address.house_number}"
+      %br
+      = "#{@appointment.address.zip} #{@appointment.address.city}"
+
+    %h3= Refugee.model_name.human
+
+    %dl
+      %dt= Refugee.human_attribute_name(:name)
+      %dd= @appointment.refugee.try(:name)
+
+      %dt= Refugee.human_attribute_name(:phone_number)
+      %dd= @appointment.refugee.try(:phone_number)
+
+      %dt= Refugee.human_attribute_name(:country_of_origin)
+      %dd= @appointment.refugee.try(:country_of_origin)
+
+  .col-lg-4
+    .panel.user
+      %h4= Organisation.model_name.human
+      = fa_icon 'user'
+      %span= @appointment.organisation.name
+      - if @appointment.organisation.phone_number
+        .div
+          = fa_icon 'phone'
+          = @appointment.organisation.phone_number
