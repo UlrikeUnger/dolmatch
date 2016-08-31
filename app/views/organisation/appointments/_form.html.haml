@@ -1,4 +1,4 @@
-= simple_form_for [current_organisation, appointment] do |f|
+= simple_form_for [:organisation, appointment] do |f|
   = f.input :date_at, as: :string, input_html: { class: 'date-picker' }
   = f.input :start_time_at, minute_step: 15
   = f.input :end_time_at, minute_step: 15
@@ -25,4 +25,4 @@
     = r_f.input :phone_number
     = r_f.input :country_of_origin, collection: [:de, :en]
 
-  = f.submit t('save'), class: 'btn btn-primary'
+  = f.button :submit, t('save'), class: 'btn btn-primary'
