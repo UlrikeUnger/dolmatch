@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    current_organisation ? organisation_appointments_path : interpreter_appointments_path
+    if current_organisation
+      organisation_appointments_path
+    elsif current_admin
+      admin_appointments_path
+    else
+      interpreter_appointments_path
+    end
   end
 
   def set_locale_from_session
