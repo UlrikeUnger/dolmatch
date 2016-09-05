@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
-
-    if current_organisation
+    if current_admin
+      redirect_to admin_appointments_path
+    elsif current_organisation
       redirect_to organisation_appointments_path
     elsif current_interpreter
       @search = Appointment.with_status(:available).ransack(params[:q])

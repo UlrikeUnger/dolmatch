@@ -1,6 +1,11 @@
 %nav
   %ul
-    - if current_interpreter
+    - if current_admin
+      %li{class: (request.path.start_with?(admin_appointments_path)) ? 'active' : ''}= link_to Appointment.model_name.human, admin_appointments_path
+      %li{class: (request.path.start_with?(admin_organisations_path)) ? 'active' : ''}= link_to Organisation.model_name.human, admin_organisations_path
+      %li{class: (request.path.start_with?(admin_interpreters_path)) ? 'active' : ''}= link_to Interpreter.model_name.human, admin_interpreters_path
+      %li= link_to t('.logout'), destroy_admin_session_path, data: {method: :delete}
+    - elsif current_interpreter
       %li{class: (request.path == root_path) ? 'active' : ''}= link_to t('find_a_mission'), root_path
       %li{class: (request.path.start_with?(interpreter_appointments_path)) ? 'active' : ''}= link_to t('.my_missions'), interpreter_appointments_path
       %li{class: (request.path == edit_interpreter_path(current_interpreter)) ? 'active' : ''}

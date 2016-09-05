@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :organisations
   devise_for :interpreters
 
@@ -7,6 +8,12 @@ Rails.application.routes.draw do
   get  'static_pages/terms_and_conditions'
   root 'static_pages#home'
   patch '/language', to: 'languages#update'
+
+  namespace :admin do
+    resources :organisations
+    resources :interpreters
+    resources :appointments
+  end
 
   namespace :organisation do
     resources :appointments do

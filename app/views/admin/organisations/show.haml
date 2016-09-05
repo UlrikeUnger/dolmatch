@@ -1,0 +1,20 @@
+.row
+  %h2
+    .col-lg-12
+      = @organisation.email
+.row
+  .col-lg-8
+    %h3= Organisation.model_name.human
+    %dl
+      %dt= Organisation.human_attribute_name(:name)
+      %dd= @organisation.name
+      %dt= Organisation.human_attribute_name(:phone_number)
+      %dd= @organisation.phone_number
+
+    %h3= Address.model_name.human
+    - if @organisation.address
+      %address
+        %br
+        = "#{@organisation.address.street} #{@organisation.address.house_number}"
+        %br
+        = "#{@organisation.address.zip} #{@organisation.address.city}"

@@ -1,0 +1,23 @@
+.row
+  %h2
+    .col-lg-12
+      = @interpreter.email
+.row
+  .col-lg-8
+    %h3= Interpreter.model_name.human
+    %dl
+      %dt= Interpreter.human_attribute_name(:name)
+      %dd= @interpreter.name
+      %dt= Interpreter.human_attribute_name(:phone_number)
+      %dd= @interpreter.phone_number
+
+    %table
+      %tr
+        %td= fa_icon 'flag'
+        %td
+      - @interpreter.language_skills.each do |ls|
+        %tr
+          %td
+          %td
+            = ls.locale
+            = ls.level

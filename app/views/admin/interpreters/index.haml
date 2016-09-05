@@ -1,0 +1,28 @@
+.row
+  .col-md-3
+    .filters
+      .filters-head= t 'filters'
+      .filters-content
+        = search_form_for [:admin, @search], defaults: { required: false, label: false } do |f|
+          = f.input :email_cont, prompt: Interpreter.human_attribute_name(:email),
+          label: Interpreter.human_attribute_name(:email)
+          = f.input :name_cont, prompt: Interpreter.human_attribute_name(:name),
+          label: Interpreter.human_attribute_name(:name)
+          = f.submit t('search'), class: 'btn btn-default btn-sm'
+
+  .col-md-9
+    %table.table.table-striped
+      %thead
+        %tr
+          %td= sort_link(@search, :email, Interpreter.human_attribute_name(:email))
+          %td= sort_link(@search, :name, Interpreter.human_attribute_name(:name))
+          %td
+
+      %tbody
+        - @interpreters.each do |interpreter|
+          %tr
+            %td= interpreter.email
+            %td= interpreter.name
+            %td= link_with_icon(admin_interpreter_path(interpreter), 'eye', '', 'btn-info')
+
+    = will_paginate @interpreters, renderer: BootstrapPagination::Rails, class: 'pagination-sm'
