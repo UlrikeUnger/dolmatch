@@ -9,7 +9,7 @@ default: &default
   host:     localhost
   encoding: unicode
   pool:     5
-  username: uliunger
+  username: daniel
   password:
   template: template0
 

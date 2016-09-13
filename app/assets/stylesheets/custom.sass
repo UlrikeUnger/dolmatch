@@ -1,5 +1,13 @@
 @import 'variables'
 
+a
+  color: $primary-color
+
+a:hover
+  color: darken($primary-color, 20)
+  text-decoration: none
+
+
 h1, h2
   font-family: 'Roboto'
 h1
@@ -26,11 +34,15 @@ h2
   font-size: 30px
 
 .footer
+  // position: absolute
+  bottom: 0
   background: $gray-lighter
   margin-top: 50px
   padding-top: 10px
   padding-bottom: 40px
   width: 100%
+  a
+    margin: 0 10px
 
 .panel.empty
   background: $gray-lightest
@@ -91,3 +103,6 @@ nav
   border-bottom: 1px solid $gray-lighter
   padding-bottom: 10px
   margin-top: 30px
+
+.alert
+  margin: 20px 0
