@@ -22,7 +22,7 @@
 
 class Appointment < ActiveRecord::Base
   KINDS = %i[job_center agency education housing doctor police law_issues others].freeze
-  STATUSES = %i[available assigned done].freeze
+  STATES = %i[available assigned done].freeze
 
   belongs_to :organisation
   belongs_to :interpreter
@@ -32,17 +32,16 @@ class Appointment < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :refugee, reject_if: :all_blank
 
-  validates :venue, :organisation, :address, :date_at, :title,
+  validates :venue, :kind, :organisation, :address, :date_at, :title,
   :language_from, :start_time_at, :language_to, presence: true
-  validates :kind, presence: true#, inclusion: { in: KINDS }
 
-  scope :accessable, -> (current_interpreter) { where("status = 'available' OR interpreter_id = ?", current_interpreter) }
+  scope :accessable, -> (current_interpreter) { where("state = 'available' OR interpreter_id = ?", current_interpreter) }
 
   enum kind: KINDS
 
   after_create :organisation_confirmed?
 
-  state_machine :status, initial: :created do
+  state_machine :state, initial: :created do
 
     event :confirm_organisation do
       transition created: :available

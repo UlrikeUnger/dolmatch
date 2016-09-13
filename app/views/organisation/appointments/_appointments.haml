@@ -2,10 +2,10 @@
   = render 'empty_scope'
 
 - else
-  - if appointments.with_status(:available).any?
+  - if appointments.with_state(:available).any?
     .row
       .col-lg-12
-        %h2= Appointment.human_status_name(:available)
+        %h2= Appointment.human_state_name(:available)
         %table.table.table-striped.table-hover
           %thead
             %tr
@@ -19,7 +19,7 @@
               %td
 
           %tbody
-            - appointments.with_status(:available).each do |appointment|
+            - appointments.with_state(:available).each do |appointment|
               %tr
                 %td= appointment.language_from
                 %td= appointment.title
@@ -29,10 +29,10 @@
                 %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')
                 %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn btn-info')
 
-  - if appointments.with_status(:assigned).any?
+  - if appointments.with_state(:assigned).any?
     .row
       .col-lg-12
-        %h2= Appointment.human_status_name(:assigned)
+        %h2= Appointment.human_state_name(:assigned)
         %table.table.table-striped.table-hover
           %thead
             %tr
@@ -48,7 +48,7 @@
               %td
 
           %tbody
-            - appointments.with_status(:assigned).each do |appointment|
+            - appointments.with_state(:assigned).each do |appointment|
               %tr
                 %td= appointment.language_from
                 %td= appointment.title
@@ -63,10 +63,10 @@
                 %td
                   = link_with_icon(organisation_appointment_path(appointment), 'trash', '', 'btn btn-danger',
                   data: { method: 'DELETE', confirm: t('confirm_destroy') })
-  - if appointments.with_status(:done).any?
+  - if appointments.with_state(:done).any?
     .row
       .col-lg-12
-        %h2= Appointment.human_status_name(:done)
+        %h2= Appointment.human_state_name(:done)
         %table.table.table-striped.table-hover
           %thead
             %tr
@@ -79,7 +79,7 @@
               %td
 
           %tbody
-            - appointments.with_status(:done).each do |appointment|
+            - appointments.with_state(:done).each do |appointment|
               %tr
                 %td= appointment.language_from
                 %td= appointment.title
