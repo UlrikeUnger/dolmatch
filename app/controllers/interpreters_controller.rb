@@ -4,12 +4,11 @@ class InterpretersController < ApplicationController
   def edit; end
 
   def update
-    if @organisation.update(organisation_params)
-      flash[:notice] = t('notification.save.success', model: Organisation.model_name.human)
-      redirect_to organisation_appointments_path
+    if @interpreter.update(interpreter_params)
+      flash[:notice] = t('notification.save.success', model: Interpreter.model_name.human)
+      redirect_to interpreter_appointments_path
     else
-      @organisation.build_address unless @organisation.address
-      flash.now[:alert] = t('notification.save.failure', model: Organisation.model_name.human)
+      flash.now[:alert] = t('notification.save.fail', model: Interpreter.model_name.human)
       render :edit
     end
   end

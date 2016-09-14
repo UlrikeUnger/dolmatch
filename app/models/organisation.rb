@@ -24,8 +24,6 @@
 #
 
 class Organisation < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -35,6 +33,8 @@ class Organisation < ActiveRecord::Base
   accepts_nested_attributes_for :address, reject_if: :all_blank
 
   before_save :set_existing_appointments_available
+
+  validates :name, presence: true
 
   private
 

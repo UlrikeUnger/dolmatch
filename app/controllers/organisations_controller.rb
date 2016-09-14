@@ -11,7 +11,7 @@ class OrganisationsController < ApplicationController
       redirect_to organisation_appointments_path
     else
       @organisation.build_address unless @organisation.address
-      flash.now[:alert] = t('notification.save.failure', model: Organisation.model_name.human)
+      flash.now[:alert] = t('notification.save.fail', model: Organisation.model_name.human)
       render :edit
     end
   end

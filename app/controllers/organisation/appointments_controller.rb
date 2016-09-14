@@ -19,8 +19,10 @@ class Organisation::AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params.merge(organisation: @organisation))
 
     if @appointment.save
+      flash[:notice] = t('notification.save.success', model: Appointment.model_name.human)
       redirect_to organisation_appointments_path
     else
+      flash.now[:alert] = t('notification.save.fail', model: Appointment.model_name.human)
       @appointment.build_address unless @appointment.address
       @appointment.build_refugee unless @appointment.refugee
       render :new
@@ -36,9 +38,9 @@ class Organisation::AppointmentsController < ApplicationController
 
   def move_to_done
     if @appointment.move_to_done
-      flash[:success] = t('.success')
+      flash[:notice] = t('.success')
     else
-      flash[:error] = t('.fail')
+      flash.now[:alert] = t('.fail')
     end
 
     redirect_to organisation_appointments_path
@@ -50,16 +52,16 @@ class Organisation::AppointmentsController < ApplicationController
       redirect_to organisation_appointments_path
     else
       @appointment.build_address unless @appointment.address
-      flash.now[:alert] = t('notification.save.failure', model: Appointment.model_name.human)
+      flash.now[:alert] = t('notification.save.fail', model: Appointment.model_name.human)
       render :edit
     end
   end
 
   def destroy
-    if @appointment.destroy
+    if @appointment.available? && @appointment.destroy
       flash[:notice] = t('notification.destroy.success', model: Appointment.model_name.human)
     else
-      flash.now[:alert] = t('notification.destroy.failure', model: Appointment.model_name.human)
+      flash.now[:alert] = t('notification.destroy.fail', model: Appointment.model_name.human)
     end
     redirect_to organisation_appointments_path
   end
@@ -71,7 +73,7 @@ class Organisation::AppointmentsController < ApplicationController
   end
 
   def appointment
-    @appointment ||= Appointment.find(params[:id])
+    @appointment ||= current_organisation.appointments.find(params[:id])
   end
 
   def appointment_params

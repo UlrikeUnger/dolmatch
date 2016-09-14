@@ -2,7 +2,12 @@ de:
   notification:
     save:
       success: '%{model} successfully saved'
-      failure: '%{model} could not be saved'
+      fail: '%{model} could not be saved'
     destroy:
       success: '%{model} successfully deleted'
       fail: '%{model} could not be deleted'
+  organisation:
+    appointments:
+      move_to_done:
+        success: Appointment successfully saved in state done
+        fail: Appointment couldnt be saved in state done

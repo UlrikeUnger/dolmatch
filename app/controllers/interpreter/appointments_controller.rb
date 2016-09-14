@@ -22,7 +22,7 @@ class Interpreter::AppointmentsController < ApplicationController
     if @appointment.public_send(params[:event])
       flash[:success] = t("#{params[:event]}.save.success")
     else
-      flash[:error] = t("#{params[:event]}.save.fail")
+      flash.now[:alert] = t("#{params[:event]}.save.fail")
     end
 
     redirect_to interpreter_appointments_path
@@ -34,7 +34,7 @@ class Interpreter::AppointmentsController < ApplicationController
     if @appointment.assign
       flash[:success] = t('.success')
     else
-      flash[:error] = t('.fail')
+      flash.now[:alert] = t('.fail')
     end
 
     redirect_to interpreter_appointments_path

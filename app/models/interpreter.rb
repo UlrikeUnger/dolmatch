@@ -32,5 +32,5 @@ class Interpreter < ActiveRecord::Base
   accepts_nested_attributes_for :language_skills
 
   validates_associated :language_skills
-  validates :language_skills, presence: true
+  validates :name, :language_skills, presence: true
 end
