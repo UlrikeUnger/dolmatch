@@ -1,4 +1,12 @@
 de:
+  interpreter:
+    appointments:
+      assign:
+        success: Termin erfolgreich zugewiesen
+        fail: Terminzuweisung konnte nicht gespeichert werden
+      update:
+        success: Termin abgelehnt
+        fail: Ablehnung des Termins kann nicht gespeichert werden
   notification:
     save:
       success: '%{model} erfolgreich gespeichert'

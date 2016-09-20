@@ -1,4 +1,12 @@
 de:
+  interpreter:
+    appointments:
+      assign:
+        success: Appointment successfully assigned
+        fail: Assigning could not be saved
+      update:
+        success: Appointment successfilly declined
+        fail: Declining could not be saved
   notification:
     save:
       success: '%{model} successfully saved'

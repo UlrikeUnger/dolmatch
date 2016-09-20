@@ -42,6 +42,7 @@ class Appointment < ActiveRecord::Base
   after_create :organisation_confirmed?
 
   state_machine :state, initial: :created do
+    before_transition  on: :unassign, do: :remove_interpreter
 
     event :confirm_organisation do
       transition created: :available
@@ -74,4 +75,7 @@ class Appointment < ActiveRecord::Base
     confirm_organisation if organisation.confirmed?
   end
 
+  def remove_interpreter
+    self.interpreter = nil
+  end
 end
