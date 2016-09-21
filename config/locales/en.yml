@@ -84,7 +84,9 @@ en:
         one: is the wrong length (should be 1 character)
         other: is the wrong length (should be %{count} characters)
       other_than: must be other than %{count}
-
+  time:
+    formats:
+      short: '%H:%M'
   will_paginate:
     previous_label: '&#8592; Previous'
     next_label: 'Next &#8594;'

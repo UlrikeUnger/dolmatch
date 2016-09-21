@@ -112,6 +112,9 @@ de:
         other: hat die falsche Länge (muss genau %{count} Zeichen haben)
       other_than: darf nicht gleich %{count} sein
 
+  time:
+    formats:
+      short: '%H:%M Uhr'
   will_paginate:
     previous_label: '&#8592; Zurück'
     next_label: 'Weiter &#8594;'
