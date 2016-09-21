@@ -41,17 +41,18 @@
       %br
       = "#{@appointment.address.zip} #{@appointment.address.city}"
 
-    %h3= Refugee.model_name.human
+    - if @appointment.refugee
+      %h3= Refugee.model_name.human
 
-    %dl
-      %dt= Refugee.human_attribute_name(:name)
-      %dd= @appointment.refugee.try(:name)
+      %dl
+        %dt= Refugee.human_attribute_name(:name)
+        %dd= @appointment.refugee.try(:name)
 
-      %dt= Refugee.human_attribute_name(:phone_number)
-      %dd= @appointment.refugee.try(:phone_number)
+        %dt= Refugee.human_attribute_name(:phone_number)
+        %dd= @appointment.refugee.try(:phone_number)
 
-      %dt= Refugee.human_attribute_name(:country_of_origin)
-      %dd= @appointment.refugee.try(:country_of_origin)
+        %dt= Refugee.human_attribute_name(:country_of_origin)
+        %dd= @appointment.refugee.try(:country_of_origin)
 
   .col-lg-4
     .panel.user
