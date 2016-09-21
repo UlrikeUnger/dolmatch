@@ -23,6 +23,6 @@
     .small= t('.only_with_consent')
     = r_f.input :name
     = r_f.input :phone_number
-    = r_f.input :country_of_origin, collection: [:de, :en]
+    = r_f.input :country_of_origin
 
   = f.button :submit, t('save'), class: 'btn btn-primary'
