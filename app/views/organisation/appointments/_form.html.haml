@@ -5,9 +5,9 @@
   = f.input :title
   = f.input :description
   = f.input :kind, collection: Appointment::KINDS, label_method:-> (kind) { t("appointment.kinds.#{kind}")}
-  = f.input :language_from, collection: [:de, :en, :urdu, :farsi, :albanian],
+  = f.input :language_from, collection: I18n.t('locales').invert,
   prompt: t('select', attribute: Appointment.human_attribute_name(:language_from))
-  = f.input :language_to, collection: [:de, :en, :urdu, :farsi, :albanian],
+  = f.input :language_to, collection: I18n.t('locales').invert,
   prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
 
   %h2= t('.information_about_address')

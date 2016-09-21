@@ -21,7 +21,7 @@
           %tbody
             - appointments.with_state(:available).each do |appointment|
               %tr
-                %td= appointment.language_from
+                %td= I18n.t("locales.#{appointment.language_from}")
                 %td= appointment.title
                 %td= t("appointment.kinds.#{appointment.kind}")
                 %td= "#{appointment.address.zip} #{appointment.address.city}"
@@ -50,7 +50,7 @@
           %tbody
             - appointments.with_state(:assigned).each do |appointment|
               %tr
-                %td= appointment.language_from
+                %td= I18n.t("locales.#{appointment.language_from}")
                 %td= appointment.title
                 %td= t("appointment.kinds.#{appointment.kind}")
                 %td= "#{appointment.address.zip} #{appointment.address.city}"
@@ -81,7 +81,7 @@
           %tbody
             - appointments.with_state(:done).each do |appointment|
               %tr
-                %td= appointment.language_from
+                %td= I18n.t("locales.#{appointment.language_from}")
                 %td= appointment.title
                 %td= t("appointment.kinds.#{appointment.kind}")
                 %td= "#{appointment.address.zip} #{appointment.address.city}"

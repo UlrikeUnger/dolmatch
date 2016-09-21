@@ -10,8 +10,26 @@ de:
       law_issues: Gericht & Anwalt
       others: Sonstiges
   locales:
-    en: Englisch
+    am: 'Amharisch'
+    ar: 'Arabisch'
+    bg: 'Bulgarisch'
     de: Deutsch
+    en: 'Englisch'
+    es: 'Spanisch'
+    fa: 'Farsi/ Dari (Persisch)'
+    fr: 'Französisch'
+    ku: 'Kurdisch'
+    pt: 'Portugiesisch'
+    ro: 'Rumänisch'
+    ru: 'Russisch'
+    so: 'Somali'
+    sq: 'Albanisch'
+    sr: 'Serbokroatisch'
+    sw: 'Kiswahili'
+    ti: 'Tigrinya'
+    tr: 'Türkisch'
+    ur: 'Urdu'
+    vi: 'Vietnamesisch'
   attributes:
   activerecord:
     attributes:

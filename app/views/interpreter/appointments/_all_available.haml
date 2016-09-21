@@ -4,10 +4,10 @@
       .filters-head= t 'filters'
       .filters-content
         = search_form_for search, url: root_path, defaults: { required: false, label: false } do |f|
-          = f.input :language_from, collection: [:de, :en, :urdu, :farsi, :albanian],
+          = f.input :language_from, collection: I18n.t('locales').invert,
           prompt: t('select', attribute: Appointment.human_attribute_name(:language_from)),
           label: Appointment.human_attribute_name(:language_from)
-          = f.input :language_to, collection: [:de, :en, :urdu, :farsi, :albanian],
+          = f.input :language_to, collection: I18n.t('locales').invert,
           prompt: t('select', attribute: Appointment.human_attribute_name(:language_to)),
           label: Appointment.human_attribute_name(:language_to)
           = f.input :address_zip_or_address_city_cont,
@@ -31,7 +31,7 @@
       %tbody
         - appointments.each do |appointment|
           %tr
-            %td= appointment.language_from
+            %td= I18n.t("locales.#{appointment.language_from}")
             %td= t("appointments.kind.#{appointment.kind}")
             %td= "#{appointment.address.zip} #{appointment.address.city}"
             %td{class: (appointment.date_at == Date.today) ? 'urgent' : ''}

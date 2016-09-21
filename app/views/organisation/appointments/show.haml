@@ -24,10 +24,10 @@
       %dd= @appointment.description
 
       %dt= Appointment.human_attribute_name(:language_from)
-      %dd= @appointment.language_from
+      %dd= I18n.t("locales.#{@appointment.language_from}")
 
       %dt= Appointment.human_attribute_name(:language_to)
-      %dd= @appointment.language_to
+      %dd= I18n.t("locales.#{@appointment.language_to}")
 
     %h3= Appointment.human_attribute_name(:venue)
 
