@@ -75,7 +75,7 @@ de:
         states:
           available: Verfügbar
           assigned: Zugewiesen
-          done: Statt Gefunden
+          done: Abgeschlossene
   errors:
     format: "%{attribute} %{message}"
     messages:
