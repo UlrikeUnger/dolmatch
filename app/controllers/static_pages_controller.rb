@@ -6,9 +6,7 @@ class StaticPagesController < ApplicationController
     elsif current_organisation
       redirect_to organisation_appointments_path
     elsif current_interpreter
-      @search = Appointment.with_state(:available).ransack(params[:q])
-      @search.sorts = 'date_at desc' if @search.sorts.empty?
-      @appointments = @search.result.paginate(page: params[:page])
+      redirect_to search_interpreter_appointments_path      
     else
       render layout: 'landing_page'
     end

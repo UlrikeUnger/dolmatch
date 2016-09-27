@@ -31,7 +31,7 @@ RSpec.describe StaticPagesController, type: :controller do
         let(:user) { FactoryGirl.create(:interpreter) }
         let(:type) { :interpreter }
 
-        it { is_expected.to render_template(:home) }
+        it { is_expected.to redirect_to(search_interpreter_appointments_path) }
       end
     end
   end

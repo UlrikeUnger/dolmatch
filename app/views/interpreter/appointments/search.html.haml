@@ -1,1 +1,44 @@
-= render 'interpreter/appointments/all_available', appointments: @appointments, search: @search
+.row
+  .col-md-3
+    .filters
+      .filters-head= t 'filters'
+      .filters-content
+        = search_form_for [:interpreter, @search], url: search_interpreter_appointments_path, defaults: { required: false, label: false } do |f|
+          = f.input :language_from_eq, collection: I18n.t('locales').invert,
+          prompt: t('select', attribute: Appointment.human_attribute_name(:language_from)),
+          label: Appointment.human_attribute_name(:language_from)
+          = f.input :language_to_eq, collection: I18n.t('locales').invert,
+          prompt: t('select', attribute: Appointment.human_attribute_name(:language_to)),
+          label: Appointment.human_attribute_name(:language_to)
+          = f.input :address_zip_or_address_city_cont,
+          placeholder: Appointment.human_attribute_name(:zip_or_city), label: Appointment.human_attribute_name(:zip_or_city)
+          = f.input :title_cont, placeholder: Appointment.human_attribute_name(:title), label: Appointment.human_attribute_name(:title)
+          = f.input :kind_eq, collection: t("appointment.kinds").invert,
+          prompt: t('select', attribute: Appointment.human_attribute_name(:kind)),
+          label: Appointment.human_attribute_name(:kind)
+          = f.submit t('search'), class: 'btn btn-default btn-sm'
+
+  .col-md-9
+    %table.table.table-striped
+      %thead
+        %tr
+          %td= Appointment.human_attribute_name :language_from
+          %td= Appointment.human_attribute_name :kind
+          %td= Appointment.human_attribute_name :address
+          %td= Appointment.human_attribute_name :date_at
+          %td
+
+      %tbody
+        - @appointments.each do |appointment|
+          %tr
+            %td= I18n.t("locales.#{appointment.language_from}")
+            %td= t("appointments.kind.#{appointment.kind}")
+            %td= "#{appointment.address.zip} #{appointment.address.city}"
+            %td{class: (appointment.date_at == Date.today) ? 'urgent' : ''}
+              = date_and_time appointment
+            - if current_interpreter
+              %td= link_with_icon(interpreter_appointment_path(appointment), 'eye', '', 'btn-info')
+            - else
+              %td= link_with_icon(new_interpreter_session_path, 'eye', '', 'btn-info')
+
+    = will_paginate @appointments, renderer: BootstrapPagination::Rails, class: 'pagination-sm'
