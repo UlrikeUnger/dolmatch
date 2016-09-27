@@ -1,92 +1,33 @@
-- if appointments.empty?
-  = render 'empty_scope'
-
-- else
-  - if appointments.with_state(:available).any?
-    .row
-      .col-lg-12
-        %h2= Appointment.human_state_name(:available)
-        %table.table.table-striped.table-hover
-          %thead
+- if appointments.any?
+  .row
+    .col-lg-12
+      %h2= Appointment.human_state_name(appointments.first.state)
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %td= Appointment.human_attribute_name :language_from
+            %td= Appointment.human_attribute_name :title
+            %td= Appointment.human_attribute_name :kind
+            %td= Appointment.human_attribute_name :address
+            %td= Appointment.human_attribute_name :date_at
+            %td
+            %td= t('edit', model: '')
+            %td= t('destroy', model: '')
+            %td
+        %tbody
+          - appointments.each do |appointment|
             %tr
-              %td= Appointment.human_attribute_name :language_from
-              %td= Appointment.human_attribute_name :title
-              %td= Appointment.human_attribute_name :kind
-              %td= Appointment.human_attribute_name :address
-              %td= Appointment.human_attribute_name :date_at
-              %td
-              %td= t('edit', model: '')
-              %td
-
-          %tbody
-            - appointments.with_state(:available).each do |appointment|
-              %tr
-                %td= I18n.t("locales.#{appointment.language_from}")
-                %td= appointment.title
-                %td= t("appointment.kinds.#{appointment.kind}")
-                %td= "#{appointment.address.zip} #{appointment.address.city}"
-                %td= date_and_time appointment
-                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')
-                %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn btn-info')
-
-  - if appointments.with_state(:assigned).any?
-    .row
-      .col-lg-12
-        %h2= Appointment.human_state_name(:assigned)
-        %table.table.table-striped.table-hover
-          %thead
-            %tr
-              %td= Appointment.human_attribute_name :language_from
-              %td= Appointment.human_attribute_name :title
-              %td= Appointment.human_attribute_name :kind
-              %td= Appointment.human_attribute_name :address
-              %td= Appointment.human_attribute_name :date_at
-              %td= Interpreter.model_name.human
-              %td
-              %td= t('edit', model: '')
-              %td= t('destroy', model: '')
-              %td
-
-          %tbody
-            - appointments.with_state(:assigned).each do |appointment|
-              %tr
-                %td= I18n.t("locales.#{appointment.language_from}")
-                %td= appointment.title
-                %td= t("appointment.kinds.#{appointment.kind}")
-                %td= "#{appointment.address.zip} #{appointment.address.city}"
-                %td= date_and_time appointment
+              %td= I18n.t("locales.#{appointment.language_from}")
+              %td= appointment.title
+              %td= t("appointment.kinds.#{appointment.kind}")
+              %td= "#{appointment.address.zip} #{appointment.address.city}"
+              %td= date_and_time appointment
+              %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')
+              - if appointment.done?
                 %td
-                  %span{data: {toggle: 'tooltip'}, title: appointment.interpreter.phone_number}
-                    = appointment.interpreter.name
-                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')
+                %td
+              - else
                 %td= link_with_icon(edit_organisation_appointment_path(appointment), 'pencil', '', 'btn btn-info')
                 %td
                   = link_with_icon(organisation_appointment_path(appointment), 'trash', '', 'btn btn-danger',
                   data: { method: 'DELETE', confirm: t('confirm_destroy') })
-  - if appointments.with_state(:done).any?
-    .row
-      .col-lg-12
-        %h2= Appointment.human_state_name(:done)
-        %table.table.table-striped.table-hover
-          %thead
-            %tr
-              %td= Appointment.human_attribute_name :language_from
-              %td= Appointment.human_attribute_name :title
-              %td= Appointment.human_attribute_name :kind
-              %td= Appointment.human_attribute_name :address
-              %td= Appointment.human_attribute_name :date_at
-              %td= Interpreter.model_name.human
-              %td
-
-          %tbody
-            - appointments.with_state(:done).each do |appointment|
-              %tr
-                %td= I18n.t("locales.#{appointment.language_from}")
-                %td= appointment.title
-                %td= t("appointment.kinds.#{appointment.kind}")
-                %td= "#{appointment.address.zip} #{appointment.address.city}"
-                %td= date_and_time appointment
-                %td
-                  %span{data: {toggle: 'tooltip'}, title: appointment.interpreter.phone_number}
-                    = appointment.interpreter.name
-                %td= link_with_icon(organisation_appointment_path(appointment), 'eye', '', 'btn btn-info')

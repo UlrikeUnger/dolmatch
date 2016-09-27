@@ -1,1 +1,7 @@
-= render 'appointments', appointments: @appointments
+- if @appointments.empty?
+  = render 'empty_scope'
+
+- else
+  = render 'appointments', appointments: @appointments.with_state(:available)
+  = render 'appointments', appointments: @appointments.with_state(:assigned)
+  = render 'appointments', appointments: @appointments.with_state(:done)
