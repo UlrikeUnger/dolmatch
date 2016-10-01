@@ -18,6 +18,7 @@ de:
   register: Registrieren
   save: Speichern
   search: Suchen
+  search_reset: Suche zurücksetzen
   select: 'Bitte %{attribute} wählen'
   to: nach
 
@@ -58,8 +59,10 @@ de:
         see_if_you_can_help: Hier kannst du helfen
       show:
         appointment: 'Termin: %{kind}'
-        i_cant_help_you: "Ich kann den Termin leider nicht wahrnehmen"
+        i_cant_help_you: Termin absagen
         ill_help_you: Ich kann dir helfen!
+      search:
+        found_appointments: '%{count} Termine vorhanden'
   interpreters:
     registrations:
       new:

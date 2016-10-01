@@ -1,20 +1,22 @@
-.devise-container
-  .devise-views.text-left
-    .panel.panel-default.devise-bs
-      .panel-heading
-        = title_with_icon(t('edit', model: Interpreter.model_name.human), 'pencil')
-      .panel-body
-        = simple_form_for(@interpreter) do |f|
+.row
+  .col-lg-2
+  .col-lg-8
+    .row
+      .col-lg-12
+        %h1.list-subheadline= t('edit', model: Interpreter.model_name.human)
+
+        = simple_form_for(@interpreter, html: {class: 'form-horizontal'}, wrapper: :horizontal_form) do |f|
           = f.error_notification
 
           = f.input :name
           = f.input :zip
           = f.input :radius
 
-          = f.simple_fields_for :language_skills do |language_skill|
+          = f.simple_fields_for :language_skills, html: {class: 'form-inline'} do |language_skill|
             = render 'interpreters/registrations/language_skill_fields', f: language_skill
           .links
             = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
             :language_skills, class: 'btn btn-default btn-sm', partial: 'interpreters/registrations/language_skill_fields'
 
           = f.button :submit, t('edit', model: Interpreter.model_name.human), class: 'btn btn-default btn-primary'
+  .col-lg-2

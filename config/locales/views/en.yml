@@ -18,6 +18,7 @@ en:
   register: Register
   save: Save
   search: Search
+  search_reset: Reset search
   select: 'Please choose %{attribute}'
   to: to
 
@@ -39,6 +40,8 @@ en:
         appointment: '%{kind} appointment'
         i_cant_help_you: "I'm sorry I can't help you"
         ill_help_you: I will help you!
+      search:
+        found_appointments: '%{count} appointments available'
   interpreters:
     registrations:
       new:

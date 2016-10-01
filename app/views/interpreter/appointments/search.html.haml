@@ -15,9 +15,11 @@
           = f.input :kind_eq, collection: t("appointment.kinds").invert,
           prompt: t('select', attribute: Appointment.human_attribute_name(:kind)),
           label: Appointment.human_attribute_name(:kind)
-          = f.submit t('search'), class: 'btn btn-primary-bg btn-full-width'
+          = f.submit t('search'), class: 'btn btn-primary btn-full-width'
+        %div= link_to t('search_reset'), search_interpreter_appointments_path
 
   .col-md-9
+    %h1= t('.found_appointments', count: @appointments.count)
     %table.table.table-striped
       %thead
         %tr
@@ -29,7 +31,7 @@
 
       %tbody
         - @appointments.each do |appointment|
-          %tr
+          %tr.table-overview
             %td= I18n.t("locales.#{appointment.language_from}")
             %td= t("appointments.kind.#{appointment.kind}")
             %td= "#{appointment.address.zip} #{appointment.address.city}"
