@@ -4,17 +4,16 @@ require 'json'
 
 response = RestClient.get "https://mailtrap.io/api/v1/inboxes.json?api_token=#{ENV['MAILTRAP_API_TOKEN']}"
 
-first_inbox = JSON.parse(response)[0] # get first inbox
+ActionMailer::Base.smtp_settings = {
+  :port           => ENV['MAILGUN_SMTP_PORT'],
+  :address        => ENV['MAILGUN_SMTP_SERVER'],
+  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  :domain         => 'dolmatch.org',
+  :authentication => :plain
+}
 
 ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-:user_name => first_inbox['username'],
-:password => first_inbox['password'],
-:address => first_inbox['domain'],
-:domain => first_inbox['domain'],
-:port => first_inbox['smtp_ports'][0],
-:authentication => :plain
-}
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
