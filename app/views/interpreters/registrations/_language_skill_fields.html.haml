@@ -1,4 +1,4 @@
-.nested-fields
-  .col-md-offset-3= link_to_remove_association fa_icon('remove'), f, class: 'btn btn-default btn-sm'
-  = f.input :locale, collection: I18n.t('locales').invert
-  = f.input :level, collection: LanguageSkill.levels
+.col-sm-offset-3.nested-fields
+  = f.input :locale, collection: I18n.t('locales').invert, required: false
+  = f.input :level, collection: LanguageSkill.levels, required: false
+  = link_to_remove_association fa_icon('remove'), f, class: 'btn btn-default btn-sm'
