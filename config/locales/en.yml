@@ -36,6 +36,7 @@ en:
         zip_or_city: Zip code or city
         refugee_details: Details refugee
         organisation_details: Details social organisation
+        interpreter_details: Details interpreter
       language_skill:
         locale: Language
         level: Level

@@ -57,6 +57,7 @@ de:
         zip_or_city: PLZ oder Stadt
         refugee_details: Details zum Geflüchteten
         organisation_details: Details zum sozialen Träger
+        interpreter_details: Details zum ehrenamtlichen Übersetzer
       language_skill:
         locale: Sprache
         level: Niveau
