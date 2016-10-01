@@ -7,8 +7,15 @@ en:
   edit: 'Edit %{model}'
   filters: Filters
   find_a_mission: Find a appointment
+  for_interpreter: For interpreter
+  for_organisation: For organisation
+  forgot_password: forgot password
+  interpreter_login: Login as interpreter
+  login: Login
   open_appointments: '%{count} open appointments'
+  organisation_login: Login as organisation
   personal_data: Login data
+  register: Register
   save: Save
   search: Search
   select: 'Please choose %{attribute}'

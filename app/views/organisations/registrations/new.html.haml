@@ -1,7 +1,9 @@
-.panel.panel-default.devise-bs
-  .panel-heading
-    = title_with_icon(t('.title'), 'institution')
-  .panel-body
+.panel
+  %ul.nav.nav-tabs.nav-justified
+    %li{role: :presentation}= link_to(t('for_interpreter'), new_interpreter_registration_path)
+    %li.active{role: :presentation}= link_to(t('for_organisation'), '#')
+    %h1= t('.title')
+
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = f.error_notification
 

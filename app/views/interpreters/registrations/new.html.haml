@@ -1,21 +1,23 @@
-.panel.panel-default.devise-bs
-  .panel-heading
-    = title_with_icon(t('.title'), 'male')
-  .panel-body
-    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = f.error_notification
+.panel
+  %ul.nav.nav-tabs.nav-justified
+    %li.active{role: :presentation}= link_to(t('for_interpreter'), '#')
+    %li{role: :presentation}= link_to(t('for_organisation'), new_organisation_registration_path)
+    %h1= t('.title')
 
-      %h2= LanguageSkill.model_name.human
-      = f.simple_fields_for :language_skills do |language_skill|
-        = render 'language_skill_fields', f: language_skill
-      .links
-        = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
-        :language_skills, class: 'btn btn-default btn-sm'
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.error_notification
 
-      %h2= t('personal_data')
-      .form-inputs
-        = f.input :email, required: true, autofocus: true
-        = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-        = f.input :password_confirmation, required: true
+    %h2= LanguageSkill.model_name.human
+    = f.simple_fields_for :language_skills do |language_skill|
+      = render 'language_skill_fields', f: language_skill
+    .links
+      = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
+      :language_skills, class: 'btn btn-default btn-sm'
 
-      = f.button :submit, t('.title'), class: 'btn btn-default btn-primary'
+    %h2= t('personal_data')
+    .form-inputs
+      = f.input :email, required: true, autofocus: true
+      = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+      = f.input :password_confirmation, required: true
+
+    = f.button :submit, t('.title'), class: 'btn btn-default btn-primary'

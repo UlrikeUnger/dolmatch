@@ -7,8 +7,15 @@ de:
   edit: '%{model} bearbeiten'
   filters: Filters
   find_a_mission: Termin finden
+  for_interpreter: Für sozialen Träger
+  for_organisation: Für ehrenamtlichen Dolmetscher
+  forgot_password: Passwort vergessen
+  interpreter_login: Anmelden als ehrenamlicher Dolmetscher
+  login: Login
   open_appointments: '%{count} Offene Termine'
+  organisation_login: Anmelden als Organisation
   personal_data: Anmeldedaten
+  register: Registrieren
   save: Speichern
   search: Suchen
   select: 'Bitte %{attribute} wählen'

@@ -8,25 +8,22 @@
         .panel-content
           = t('.content_interpreter')
           .row
-            .col-sm-12= link_to(t('.i_want_to_help'), interpreter_appointments_path, class: 'btn btn-default btn-info' )
+            .col-sm-12= link_to(t('.i_want_to_help'), interpreter_appointments_path, class: 'btn btn-default btn-warning' )
     .col-sm-4
       .mission-panel
         .panel-title= t('.title_organisation')
         .panel-content
           .mission-text= t('.content_organisation')
           .row
-            .col-sm-12= link_to(t('add_appointment'), new_organisation_session_path, class: 'btn btn-default btn-info' )
+            .col-sm-12= link_to(t('add_appointment'), new_organisation_session_path, class: 'btn btn-default btn-primary' )
 
 .row.text-center
   .col-sm-4
-    = fa_icon 'users'
     %h2= t('.headline_one')
     %p= t('.description_one')
   .col-sm-4
-    = fa_icon 'user'
     %h2= t('.headline_two')
     %p= t('.description_two')
   .col-sm-4
-    = fa_icon 'users'
     %h2= t('.headline_three')
     %p= t('.description_three')

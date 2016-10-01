@@ -1,0 +1,18 @@
+@import 'variables'
+
+nav
+  display: inline-block
+  height: 100%
+  color: $nav-link-color
+  ul
+    margin-bottom: 0px
+    > li
+      padding-left: 10px
+      padding-right: 10px
+      display: inline-block
+      list-style: none
+      a
+        color: $nav-link-color
+      a:hover, &.active > a
+        opacity: darken($nav-link-color, 20)
+        text-decoration: none

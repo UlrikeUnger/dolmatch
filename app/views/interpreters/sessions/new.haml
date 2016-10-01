@@ -1,0 +1,17 @@
+.panel
+  %ul.nav.nav-tabs.nav-justified
+    %li.active{role: :presentation}= link_to(t('for_interpreter'), '#')
+    %li{role: :presentation}= link_to(t('for_organisation'), new_organisation_session_path)
+    %h1= t('interpreter_login')
+
+    = simple_form_for(resource, as: :interpreter, url: interpreter_session_path) do |f|
+      .form-inputs
+        = f.input :email, required: false, autofocus: true
+        = f.input :password, required: false
+        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .form-actions
+        = f.button :submit, t('login'), class: 'btn btn-default btn-warning'
+
+%div= link_to t('register'), new_interpreter_registration_path
+%div= link_to t('forgot_password'), new_interpreter_registration_path
+%div= link_to t('new_confirmation_mail'), new_interpreter_confirmation_path

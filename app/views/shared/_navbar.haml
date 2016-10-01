@@ -27,8 +27,9 @@
           = t('.logout')
           = "(#{current_organisation.email})"
     - else
-      %li= link_to(t('add_appointment'), new_organisation_session_path)
-      %li= link_to(t('static_pages.home.i_want_to_help'), new_interpreter_session_path)
+      %li= link_to(t('login'), new_interpreter_session_path)
+      |
+      %li= link_to(t('register'), new_interpreter_registration_path)
     -# %li.language-select
     -#   = simple_form_for :language, url: language_path, method: :patch do |f|
     -#     = f.input :locale, collection: I18n.available_locales, label: false,
