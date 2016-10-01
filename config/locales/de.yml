@@ -31,6 +31,8 @@ de:
     ur: 'Urdu'
     vi: 'Vietnamesisch'
   attributes:
+    name: Name
+    phone_number: Telefonnummer
   activerecord:
     attributes:
       address:
@@ -53,6 +55,8 @@ de:
         start_time: Von
         venue: Treffpunkt
         zip_or_city: PLZ oder Stadt
+        refugee_details: Details zum Geflüchteten
+        organisation_details: Details zum sozialen Träger
       language_skill:
         locale: Sprache
         level: Niveau
@@ -60,8 +64,6 @@ de:
         name: Name der Einrichtung
       refugee:
         country_of_origin: Herkunftsland
-        name: Name
-        phone_number: Telefonnummer
     models:
       appointment:
         one: Termin

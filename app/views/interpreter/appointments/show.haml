@@ -1,65 +1,164 @@
-%h5.row.summary-header
-  .col-lg-6
-    = l (@appointment.date_at)
-    = l(@appointment.start_time_at, format: :short)
-    = " - #{ l(@appointment.end_time_at, format: :short) }" if @appointment.end_time_at
-
-  .col-lg-6.text-right
-    = "#{Appointment.human_attribute_name(:kind)}: " + t("appointment.kinds.#{@appointment.kind}")
-
 .row
-  %h2
-    .col-lg-8
-      = @appointment.title
-    .col-lg-4.text-right
-      - if @appointment.available?
-        = link_to t('.ill_help_you'), assign_interpreter_appointment_path(@appointment),
-        class: 'btn btn-primary', data: {method: :patch}
-      - if @appointment.assigned?
-        = link_to t('.i_cant_help_you'), interpreter_appointment_path(@appointment, event: :unassign),
-        class: 'btn btn-primary', data: {method: :patch}
-
-.row
+  .col-lg-2
   .col-lg-8
-    %h3= Appointment.model_name.human
-    %dl
-      %dt= Appointment.human_attribute_name(:description)
-      %dd= @appointment.description
+    .row.title-appointment
+      .col-lg-9
+        .text-small= "#{Appointment.human_attribute_name(:kind)}: " + t("appointment.kinds.#{@appointment.kind}")
+        %h1= @appointment.title
+      .col-lg-3
+        - if @appointment.available?
+          = link_to t('.ill_help_you'), assign_interpreter_appointment_path(@appointment),
+          class: 'btn btn-primary', data: {method: :patch}
+        - if @appointment.assigned?
+          = link_to t('.i_cant_help_you'), interpreter_appointment_path(@appointment, event: :unassign),
+          class: 'btn btn-primary', data: {method: :patch}
 
-      %dt= Appointment.human_attribute_name(:language_from)
-      %dd= I18n.t("locales.#{@appointment.language_from}")
+    .row
+      .col-lg-12
+        %h3.list-subheadline= Appointment.model_name.human
 
-      %dt= Appointment.human_attribute_name(:language_to)
-      %dd= I18n.t("locales.#{@appointment.language_to}")
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Appointment.human_attribute_name(:description)
+      .col-lg-8
+        = @appointment.description
 
-    %h3= Appointment.human_attribute_name(:venue)
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Appointment.human_attribute_name(:language_from)
+      .col-lg-8
+        = I18n.t("locales.#{@appointment.language_from}")
+        = " nach "
+        = I18n.t("locales.#{@appointment.language_to}")
 
-    %address
-      %strong= @appointment.venue
-      %br
-      = "#{@appointment.address.street} #{@appointment.address.house_number}"
-      %br
-      = "#{@appointment.address.zip} #{@appointment.address.city}"
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Appointment.human_attribute_name(:time)
+      .col-lg-8
+        = l (@appointment.date_at)
+        = l(@appointment.start_time_at, format: :short)
+        = " - #{ l(@appointment.end_time_at, format: :short) }" if @appointment.end_time_at
 
-    - if @appointment.refugee
-      %h3= Refugee.model_name.human
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Appointment.human_attribute_name(:venue)
+      .col-lg-8
+        %address
+          = @appointment.venue
+          %br
+          = "#{@appointment.address.street} #{@appointment.address.house_number}"
+          %br
+          = "#{@appointment.address.zip} #{@appointment.address.city}"
 
-      %dl
-        %dt= Refugee.human_attribute_name(:name)
-        %dd= @appointment.refugee.try(:name)
+    .row
+      .col-lg-12
+        %h3.list-subheadline= Appointment.human_attribute_name(:refugee_details)
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Refugee.human_attribute_name(:name)
+      .col-lg-8
+        = @appointment.refugee.try(:name)
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Refugee.human_attribute_name(:phone_number)
+      .col-lg-8
+        = @appointment.refugee.try(:phone_number)
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Refugee.human_attribute_name(:country_of_origin)
+      .col-lg-8
+        = @appointment.refugee.try(:country_of_origin)
 
-        %dt= Refugee.human_attribute_name(:phone_number)
-        %dd= @appointment.refugee.try(:phone_number)
 
-        %dt= Refugee.human_attribute_name(:country_of_origin)
-        %dd= @appointment.refugee.try(:country_of_origin)
+    .row
+      .col-lg-12
+        %h3.list-subheadline= Appointment.human_attribute_name(:organisation_details)
+    .row.list-entry
+      .col-lg-4
+        %span.text-label-list= Organisation.human_attribute_name(:name)
+      .col-lg-8
+        = @appointment.organisation.name
 
-  .col-lg-4
-    .panel.user
-      %h4= Organisation.model_name.human
-      = fa_icon 'user'
-      %span= @appointment.organisation.name
-      - if @appointment.organisation.phone_number
-        .div
-          = fa_icon 'phone'
+    - if @appointment.organisation.phone_number
+      .row
+        .col-lg-4
+          %span.text-label-list= Organisation.human_attribute_name(:phone_number)
+        .col-lg-8
           = @appointment.organisation.phone_number
+
+  .col-lg-2
+
+
+-# %h4= Organisation.model_name.human
+-# = fa_icon 'user'
+-# %span= @appointment.organisation.name
+-# - if @appointment.organisation.phone_number
+-#   .div
+-#     = fa_icon 'phone'
+-#     = @appointment.organisation.phone_number
+-#
+-# %h5.row.summary-header
+-#   .col-lg-6
+-#     = l (@appointment.date_at)
+-#     = l(@appointment.start_time_at, format: :short)
+-#     = " - #{ l(@appointment.end_time_at, format: :short) }" if @appointment.end_time_at
+-#
+-#   .col-lg-6.text-right
+-#     = "#{Appointment.human_attribute_name(:kind)}: " + t("appointment.kinds.#{@appointment.kind}")
+-#
+-# .row
+-#   %h2
+-#     .col-lg-8
+-#       = @appointment.title
+-#     .col-lg-4.text-right
+-#       - if @appointment.available?
+-#         = link_to t('.ill_help_you'), assign_interpreter_appointment_path(@appointment),
+-#         class: 'btn btn-primary', data: {method: :patch}
+-#       - if @appointment.assigned?
+-#         = link_to t('.i_cant_help_you'), interpreter_appointment_path(@appointment, event: :unassign),
+-#         class: 'btn btn-primary', data: {method: :patch}
+-#
+-# .row
+-#   .col-lg-8
+-#     %h3= Appointment.model_name.human
+-#     %dl
+-#       %dt= Appointment.human_attribute_name(:description)
+-#       %dd= @appointment.description
+-#
+-#       %dt= Appointment.human_attribute_name(:language_from)
+-#       %dd= I18n.t("locales.#{@appointment.language_from}")
+-#
+-#       %dt= Appointment.human_attribute_name(:language_to)
+-#       %dd= I18n.t("locales.#{@appointment.language_to}")
+-#
+-#     %h3= Appointment.human_attribute_name(:venue)
+-#
+-#     %address
+-#       %strong= @appointment.venue
+-#       %br
+-#       = "#{@appointment.address.street} #{@appointment.address.house_number}"
+-#       %br
+-#       = "#{@appointment.address.zip} #{@appointment.address.city}"
+-#
+-#     - if @appointment.refugee
+-#       %h3= Refugee.model_name.human
+-#
+-#       %dl
+-#         %dt= Refugee.human_attribute_name(:name)
+-#         %dd= @appointment.refugee.try(:name)
+-#
+-#         %dt= Refugee.human_attribute_name(:phone_number)
+-#         %dd= @appointment.refugee.try(:phone_number)
+-#
+-#         %dt= Refugee.human_attribute_name(:country_of_origin)
+-#         %dd= @appointment.refugee.try(:country_of_origin)
+-#
+-#   .col-lg-4
+-#     .panel.user
+-#       %h4= Organisation.model_name.human
+-#       = fa_icon 'user'
+-#       %span= @appointment.organisation.name
+-#       - if @appointment.organisation.phone_number
+-#         .div
+-#           = fa_icon 'phone'
+-#           = @appointment.organisation.phone_number

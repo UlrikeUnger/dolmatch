@@ -34,6 +34,8 @@ en:
         title: Title
         venue: Meeting point
         zip_or_city: Zip code or city
+        refugee_details: Details refugee
+        organisation_details: Details social organisation
       language_skill:
         locale: Language
         level: Level
