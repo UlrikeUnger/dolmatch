@@ -28,7 +28,7 @@
         %span.text-label-list= Appointment.human_attribute_name(:language_from)
       .col-lg-8
         = I18n.t("locales.#{@appointment.language_from}")
-        = " nach "
+        = I18n.t("to")
         = I18n.t("locales.#{@appointment.language_to}")
 
     .row.list-entry

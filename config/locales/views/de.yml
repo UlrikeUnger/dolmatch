@@ -19,6 +19,7 @@ de:
   save: Speichern
   search: Suchen
   select: 'Bitte %{attribute} wählen'
+  to: nach
 
   header:
     help_by_sharing: Hilfe mit deiner Erfahrung

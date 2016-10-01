@@ -19,6 +19,7 @@ en:
   save: Save
   search: Search
   select: 'Please choose %{attribute}'
+  to: to
 
   header:
     help_by_sharing: Help by sharing your life experience
