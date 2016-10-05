@@ -15,9 +15,14 @@
           .form-inline
             = f.simple_fields_for :language_skills do |language_skill|
               = render 'interpreters/registrations/language_skill_fields', f: language_skill
-            .links
-              = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
-              :language_skills, class: 'btn btn-default btn-sm', partial: 'interpreters/registrations/language_skill_fields'
+            .row
+              .col-sm-offset-3
+                = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
+                :language_skills, class: 'btn btn-default btn-sm', partial: 'interpreters/registrations/language_skill_fields'
 
-          = f.button :submit, t('edit', model: Interpreter.model_name.human), class: 'btn btn-default btn-primary'
+          %hr
+          .row
+            .col-sm-offset-3
+              = f.button :submit, t('save'), class: 'btn btn-default btn-primary'
+
   .col-lg-2

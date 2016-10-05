@@ -61,6 +61,7 @@ de:
         appointment: 'Termin: %{kind}'
         i_cant_help_you: Termin absagen
         ill_help_you: Ich kann dir helfen!
+        only_show_when_yours: Aus Datenschutzgründen werden die Angaben des Geflüchteten nach Annahme des Termins angezeigt.
       search:
         found_appointments: '%{count} Termine vorhanden'
   interpreters:

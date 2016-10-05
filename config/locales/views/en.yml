@@ -40,6 +40,7 @@ en:
         appointment: '%{kind} appointment'
         i_cant_help_you: "I'm sorry I can't help you"
         ill_help_you: I will help you!
+        only_show_when_yours: Only shown after appointment accept
       search:
         found_appointments: '%{count} appointments available'
   interpreters:

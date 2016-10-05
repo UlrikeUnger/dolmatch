@@ -97,27 +97,3 @@
                 = ls.level
 
   .col-lg-2
-
-
-  -# .col-lg-4
-  -#   - if @appointment.interpreter
-  -#     .panel.user
-  -#       %h4= Interpreter.model_name.human
-  -#       - if @appointment.interpreter.name
-  -#         .div
-  -#           = fa_icon 'user'
-  -#           %span= @appointment.interpreter.name
-  -#       - if @appointment.interpreter.phone_number
-  -#         .div
-  -#           = fa_icon 'phone'
-  -#           = @appointment.interpreter.phone_number
-  -#       %table
-  -#         %tr
-  -#           %td= fa_icon 'flag'
-  -#           %td
-  -#         - @appointment.interpreter.language_skills.each do |ls|
-  -#           %tr
-  -#             %td
-  -#             %td
-  -#               = ls.locale
-  -#               = ls.level
