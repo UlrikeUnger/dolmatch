@@ -1,7 +1,10 @@
-.devise-container
-  .devise-views.text-left
-    .panel.panel-default.devise-bs
-      .panel-heading
-        = title_with_icon(t('add', model: Appointment.model_name.human), 'plus')
-      .panel-body
+.row
+  .col-lg-8.col-lg-offset-2
+    .row
+      .col-lg-12
+        .row
+          .col-sm-9.col-sm-offset-3
+            %h1= t('add', model: Appointment.model_name.human)
+        %hr
+
         = render 'form', appointment: @appointment

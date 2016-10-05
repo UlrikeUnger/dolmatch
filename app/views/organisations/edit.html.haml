@@ -1,10 +1,13 @@
-.devise-container
-  .devise-views.text-left
-    .panel.panel-default.devise-bs
-      .panel-heading
-        = title_with_icon(t('edit', model: Organisation.model_name.human), 'pencil')
-      .panel-body
-        = simple_form_for(@organisation) do |f|
+.row
+  .col-lg-8.col-lg-offset-2
+    .row
+      .col-lg-12
+        .row
+          .col-sm-9.col-sm-offset-3
+            %h1= t('edit', model: Organisation.model_name.human)
+        %hr
+
+        = simple_form_for @organisation, html: {class: 'form-horizontal'}, wrapper: :horizontal_form do |f|
           = f.error_notification
 
           = f.input :name
@@ -16,4 +19,7 @@
             = ad_f.input :zip
             = ad_f.input :city
 
-          = f.button :submit, t('edit', model: Organisation.model_name.human), class: 'btn btn-default btn-primary'
+          %hr
+          .row
+            .col-sm-9.col-sm-offset-3
+              = f.button :submit, t('save'), class: 'btn btn-default btn-primary'

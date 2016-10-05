@@ -1,9 +1,11 @@
 .row
-  .col-lg-2
-  .col-lg-8
+  .col-lg-8.col-lg-offset-2
     .row
       .col-lg-12
-        %h1.list-subheadline= t('edit', model: Interpreter.model_name.human)
+        .row
+          .col-sm-9.col-sm-offset-3
+            %h1= t('edit', model: Interpreter.model_name.human)
+        %hr
 
         = simple_form_for(@interpreter, html: {class: 'form-horizontal'}, wrapper: :horizontal_form) do |f|
           = f.error_notification
@@ -22,7 +24,7 @@
 
           %hr
           .row
-            .col-sm-offset-3
+            .col-sm-9.col-sm-offset-3
               = f.button :submit, t('save'), class: 'btn btn-default btn-primary'
 
   .col-lg-2

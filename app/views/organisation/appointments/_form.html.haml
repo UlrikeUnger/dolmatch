@@ -1,4 +1,4 @@
-= simple_form_for [:organisation, appointment] do |f|
+= simple_form_for [:organisation, appointment], html: {class: 'form-horizontal'}, wrapper: :horizontal_form do |f|
   = f.input :date_at, as: :string, input_html: { class: 'date-picker' }
   = f.input :start_time_at, minute_step: 15
   = f.input :end_time_at, minute_step: 15
@@ -10,7 +10,9 @@
   = f.input :language_to, collection: I18n.t('locales').invert,
   prompt: t('select', attribute: Appointment.human_attribute_name(:language_to))
 
-  %h2= t('.information_about_address')
+  .row
+    .col-sm-9.col-sm-offset-3
+      %h2.list-subheadline= t('.information_about_address')
   = f.input :venue
   = f.simple_fields_for :address do |a_f|
     = a_f.input :street
@@ -19,10 +21,17 @@
     = a_f.input :city
 
   = f.simple_fields_for :refugee do |r_f|
-    %h2= t('.information_about_refugee')
-    .small= t('.only_with_consent')
+    .row
+      .col-sm-9.col-sm-offset-3
+        %h2.list-subheadline= t('.information_about_refugee')
+
+
     = r_f.input :name
     = r_f.input :phone_number
     = r_f.input :country_of_origin
 
-  = f.button :submit, t('save'), class: 'btn btn-primary'
+    .row
+      .col-sm-9.col-sm-offset-3.small= t('.only_with_consent')
+  %hr
+  .row
+    .col-sm-9.col-sm-offset-3= f.button :submit, t('save'), class: 'btn btn-primary'
