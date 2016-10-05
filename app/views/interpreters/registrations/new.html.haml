@@ -8,14 +8,16 @@
     = f.error_notification
 
     %h2= LanguageSkill.model_name.human
-    = f.simple_fields_for :language_skills do |language_skill|
-      = render 'language_skill_fields', f: language_skill
-    .links
-      = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
-      :language_skills, class: 'btn btn-default btn-sm'
+    .form-inline
+      = f.simple_fields_for :language_skills do |language_skill|
+        = render 'language_skill_fields', f: language_skill
+      .links
+        = link_to_add_association t('add', model: LanguageSkill.model_name.human), f,
+        :language_skills, class: 'btn btn-default btn-sm'
 
     %h2= t('personal_data')
     .form-inputs
+      = f.input :name
       = f.input :email, required: true, autofocus: true
       = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
       = f.input :password_confirmation, required: true
